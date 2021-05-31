@@ -30,8 +30,6 @@
   color: gray;
   font-family: ui-monospace;
 }
-.searchCard .card_body {
-}
 
 @media screen and (max-width: 575px) {
   .searchCard {
