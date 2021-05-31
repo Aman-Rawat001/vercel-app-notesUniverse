@@ -2,6 +2,9 @@ import React from "react";
 import "./SearchNotes.css";
 import SearchCard from "./SearchCard/SearchCard.js";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 const SearchNotes = () => {
   return (
     <>
@@ -9,19 +12,33 @@ const SearchNotes = () => {
         <div className="">
           {/* //SearchBar */}
           <form className="d-flex my-4">
+            <div className="faSearchIcon">
+              <FontAwesomeIcon icon={faSearch} />
+            </div>
             <input
+              style={{
+                backgroundColor: "#eeeeee",
+                outline: "none",
+                borderLeft: "none",
+                borderTopLeftRadius: "0",
+                borderBottomLeftRadius: "0",
+              }}
               className="form-control me-2"
               type="search"
-              placeholder="Search notes"
+              placeholder="Search notes and course guides"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button
+              className="btn btn-outline-success searchBar_btn"
+              style={{ backgroundColor: "green", color: "white" }}
+              type="submit"
+            >
               Search
             </button>
           </form>
           {/* dropdowns */}
           <div className="dropdown_menu row">
-            <div className="dropdown col-md-4">
+            <div className="dropdown col-md-3 col-sm-6 col-12 search_dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
                 type="button"
@@ -37,69 +54,12 @@ const SearchNotes = () => {
               >
                 <li>
                   <a className="dropdown-item active" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Separated link
+                    Graphic Era University
                   </a>
                 </li>
               </ul>
             </div>
-            <div className="dropdown col-md-4">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton2"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Subject
-              </button>
-              <ul
-                className="dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton2"
-              >
-                <li>
-                  <a className="dropdown-item active" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Separated link
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="dropdown col-md-4">
+            <div className="dropdown col-md-3 col-sm-6 col-12 search_dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
                 type="button"
@@ -115,37 +75,153 @@ const SearchNotes = () => {
               >
                 <li>
                   <a className="dropdown-item active" href="#">
-                    Action
+                    B.Tech c.s.e
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="dropdown col-md-3 col-sm-6 col-12 search_dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Semester
+              </button>
+              <ul
+                className="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton2"
+              >
+                <li>
+                  <a className="dropdown-item active" href="#">
+                    Semester-1
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Another action
+                    Semester-2
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Something else here
+                    Semester-3
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Semester-4
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Semester-5
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Semester-6
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Semester-7
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Semester-8
                   </a>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
+              </ul>
+            </div>
+            <div className="dropdown col-md-3 col-sm-6 col-12 search_dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Subject
+              </button>
+              <ul
+                className="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton2"
+              >
+                <li>
+                  <a className="dropdown-item active" href="#">
+                    Fundamentals of computer programming
+                  </a>
+                </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Separated link
+                    Data Structures
                   </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Discrete mathematics
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Database management system
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Theory of computation
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Java programming
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Artificial intelligence(AI)
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Internet of things(IOT)
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Cyber security
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Compiler Design
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Microprocessors and Micrcontrollers
+                  </a>
+                </li>
+
+                <li>
+                  <hr className="dropdown-divider" />
                 </li>
               </ul>
             </div>
           </div>
-          <hr className="mb-2" />
+          <hr className="my-5" />
 
           {/* search result container */}
           <div className="row">
             <div
               className="row col-md-10 col-sm-12 col-12 paper_row"
-              style={{ backgroundColor: "#f0f0f0", borderRadius: "4px" }}
+              style={{ backgroundColor: "#eeeeee", borderRadius: "4px" }}
             >
               <div className="col-md-4 col-sm-6 col-12 search_card_box">
                 <SearchCard />
@@ -169,9 +245,11 @@ const SearchNotes = () => {
             {/* RHS Stuff */}
             <div className="col-md-2 col-sm-12 col-12 ms-3">
               <div className="card ">
-                <div className="card-header">Quote</div>
+                <div className="card-header rhs_card_header">
+                  Top Institutes
+                </div>
                 <div className="card-body">
-                  <blockquote className="blockquote mb-0">
+                  <blockquote className="mb-0">
                     <p>
                       A well-known quote, contained in a blockquote element.
                     </p>
@@ -183,9 +261,9 @@ const SearchNotes = () => {
                 </div>
               </div>
               <div className="card my-2">
-                <div className="card-header">Quote</div>
+                <div className="card-header rhs_card_header">Top Area</div>
                 <div className="card-body">
-                  <blockquote className="blockquote mb-0">
+                  <blockquote className=" mb-0">
                     <p>
                       A well-known quote, contained in a blockquote element.
                     </p>

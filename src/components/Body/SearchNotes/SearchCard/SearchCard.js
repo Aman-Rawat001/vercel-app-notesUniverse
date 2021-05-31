@@ -16,7 +16,7 @@ const SearchCard = () => {
             <hr />
             <div
               className="card_content ps-1"
-              style={{ backgroundColor: "#e6e6e6" }}
+              style={{ backgroundColor: "#eeeeee" }}
             >
               <p className="ch_name">Chapter Name</p>
               <p className="course">B.Tech cse 4-Sem . 2021</p>

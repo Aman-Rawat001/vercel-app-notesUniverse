@@ -3,11 +3,35 @@
   justify-content: space-around;
   align-items: center;
 }
-
+.notes_searchBar form .faSearchIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+  border-left: 1px solid #ced4da;
+  border-top: 1px solid #ced4da;
+  padding-left: 0.5rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom: 1px solid #ced4da;
+}
+.notes_searchBar .form-control:focus {
+  box-shadow: none;
+}
 .notes_searchBar .dropdown_menu .dropdown button {
-  width: 10rem;
+  width: 100%;
+  background-color: #eeeeee;
+  color: black;
+  border: none;
+  box-shadow: 1px 2px 3px 0px #b4a9a9;
   margin-bottom: 10px;
   outline: none;
+}
+.notes_searchBar .rhs_card_header {
+  background-color: #eeeeee;
+}
+.notes_searchBar .searchBar_btn:hover {
+  background-color: gray !important;
 }
 
 @media screen and (max-width: 575px) {
