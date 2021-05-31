@@ -1,0 +1,21 @@
+.notes_searchBar .dropdown_menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.notes_searchBar .dropdown_menu .dropdown button {
+  width: 10rem;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+@media screen and (max-width: 575px) {
+  .notes_searchBar .paper_row {
+    --bs-gutter-x: 0;
+  }
+  .notes_searchBar .search_card_box {
+    display: flex;
+    justify-content: center;
+  }
+}

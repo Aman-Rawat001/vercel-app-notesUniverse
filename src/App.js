@@ -1,9 +1,12 @@
 import React from "react";
+import Body from "./components/Body/Body";
 
-export default function App() {
+const App = () => {
   return (
     <div>
-      <h1>demo text</h1>
+      <Body />
     </div>
   );
-}
+};
+
+export default App;
