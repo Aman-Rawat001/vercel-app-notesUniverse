@@ -2,3 +2,25 @@
   background-image: url("../../../images/wave.svg");
   background-repeat: no-repeat;
 }
+.contactAdmin div .leftBox {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.contactAdmin div .rightBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contactAdmin div .contactAdminSVG {
+  max-width: 35rem;
+}
+.contactAdmin form .sendmsg {
+  width: 100%;
+  border-radius: 1rem;
+  border: none;
+  background-image: linear-gradient(to right, #5a99f8, #00c4ff);
+}
+.contactAdmin form input, .contactAdmin form textarea {
+  border-radius: 1rem;
+}

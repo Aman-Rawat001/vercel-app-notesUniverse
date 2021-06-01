@@ -1,54 +1,68 @@
 import React from "react";
 import "./ContactAdmin.css";
+import socialMediaImg from "../../../images/socialMedia.svg";
 
 const ContactAdmin = () => {
   return (
     <div>
       <section className="contactAdmin">
-        <div class="text-center py-5">
-          <h1 class="display-4">Contact To Admin</h1>
-          <hr class="w-25 mx-auto" />
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 mx-auto mb-5">
-              <form>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Your Name"
-                    aria-describedby="emailHelp"
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Your Email"
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Your College"
-                    aria-describedby="emailHelp"
-                  />
-                </div>
+        <div className="container">
+          <div className="text-center py-5">
+            <h1 style={{ fontWeight: "700" }}>HAVE SOME QUESTIONS?</h1>
+            <p>Feel free to ask any kind or question related to your queiry. I would like to here you.</p>
+          </div>
+          <div className="row">
+            <div className="col-md-6 rightBox">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 mx-auto ">
+                    <form>
+                      <div class="mb-3">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Your Name"
+                          aria-describedby="emailHelp"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <input
+                          type="email"
+                          class="form-control"
+                          placeholder="Your Email"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Your College"
+                          aria-describedby="emailHelp"
+                        />
+                      </div>
 
-                <div class="mb-3">
-                  <textarea
-                    class="form-control"
-                    placeholder="Your Question..."
-                    rows="3"
-                  ></textarea>
-                </div>
+                      <div class="mb-3">
+                        <textarea
+                          class="form-control"
+                          placeholder="Your Question..."
+                          rows="3"
+                        ></textarea>
+                      </div>
 
-                <button type="submit" class="btn btn-primary">
-                  Send
-                </button>
-              </form>
+                      <button type="submit" class="btn btn-primary sendmsg">
+                        Send Message
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 leftBox">
+              <img
+                className="contactAdminSVG"
+                src={socialMediaImg}
+                alt="image"
+              />
             </div>
           </div>
         </div>
