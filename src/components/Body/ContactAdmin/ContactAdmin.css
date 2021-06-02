@@ -1,6 +1,7 @@
 .contactAdmin {
   background-image: url("../../../images/wave.svg");
   background-repeat: no-repeat;
+  margin-top: 5rem;
 }
 .contactAdmin div .leftBox {
   display: flex;
@@ -21,6 +22,7 @@
   border: none;
   background-image: linear-gradient(to right, #5a99f8, #00c4ff);
 }
-.contactAdmin form input, .contactAdmin form textarea {
+.contactAdmin form input,
+.contactAdmin form textarea {
   border-radius: 1rem;
 }

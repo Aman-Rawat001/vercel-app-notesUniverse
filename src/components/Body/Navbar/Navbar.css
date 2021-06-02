@@ -1,0 +1,54 @@
+.navigationBar .navbar-collapse {
+  flex-grow: 0;
+}
+.navigationBar {
+  box-shadow: 0px 1px 8px 0px #d7d7d7;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+}
+.navigationBar .navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigationBar .logo {
+  width: 3rem;
+}
+.navigationBar .navbar_item {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid transparent;
+}
+.navigationBar .navbar_item:hover {
+  border-bottom: 5px solid blue;
+}
+.navigationBar .navbar_item a {
+  color: gray;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.clickActive {
+  background-color: #dadef0;
+  border-bottom: 5px solid #5353ff !important;
+}
+
+@media screen and (max-width: 850px) {
+  .navigationBar .navbar_item a {
+    font-size: 1.2rem;
+  }
+  .navigationBar .navbar_item {
+    padding-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 575px) {
+  .navigationBar .navbar_item a {
+    font-size: 1rem;
+  }
+  .navigationBar .navbar_item {
+    padding-bottom: 1rem;
+  }
+}

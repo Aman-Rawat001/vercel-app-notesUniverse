@@ -1,5 +1,6 @@
 .uploadNotesBG {
-  background-image: linear-gradient(to right, #00d0ff, #00ffad);
+  background-image: linear-gradient(to right, #b3c3db, #b3c3db);
+  margin-top: 5rem;
 }
 .uploadNotesBG .form_box {
   color: white;
