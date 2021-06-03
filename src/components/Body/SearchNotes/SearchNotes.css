@@ -33,12 +33,15 @@
   outline: none;
 }
 .notes_searchBar .rhs_card_header {
-  background-color: white;
+  background-color: rgb(41, 98, 184);
+  color: white;
 }
 .notes_searchBar .searchBar_btn:hover {
-  background-color: gray !important;
+  background-color: #658ac2 !important;
 }
-
+.notes_searchBar .dropdown-menu-dark {
+  background-color: #173b70;
+}
 @media screen and (max-width: 575px) {
   .notes_searchBar .paper_row {
     --bs-gutter-x: 0;

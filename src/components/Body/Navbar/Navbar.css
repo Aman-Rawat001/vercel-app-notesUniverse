@@ -15,7 +15,7 @@
 }
 
 .navigationBar .logo {
-  width: 3rem;
+  width: 2rem;
 }
 .navigationBar .navbar_item {
   padding-left: 1.5rem;
@@ -24,7 +24,7 @@
   border-top: 5px solid transparent;
 }
 .navigationBar .navbar_item:hover {
-  border-bottom: 5px solid blue;
+  border-bottom: 5px solid #658ac2;
 }
 .navigationBar .navbar_item a {
   color: gray;
@@ -33,7 +33,7 @@
 }
 .clickActive {
   background-color: #dadef0;
-  border-bottom: 5px solid #5353ff !important;
+  border-bottom: 5px solid #658ac2 !important;
 }
 
 @media screen and (max-width: 850px) {
