@@ -1,0 +1,22 @@
+.footer {
+  background-color: #433d3d;
+  color: #999999;
+}
+.footer .leftContent img {
+  width: 2rem;
+}
+.footer .leftContent h3 {
+  font-size: 1.1rem;
+}
+.footer .leftContent {
+  align-items: flex-end;
+}
+.footer .leftContent button {
+  border: none;
+  background-color: #4883db;
+  color: white;
+}
+.footer p {
+  font-size: 0.9rem;
+  margin: 8px;
+}

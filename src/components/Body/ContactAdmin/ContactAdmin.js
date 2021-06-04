@@ -5,7 +5,7 @@ import socialMediaImg from "../../../images/socialMedia.svg";
 const ContactAdmin = () => {
   return (
     <div>
-      <section className="contactAdmin">
+      <section className="contactAdmin mb-5">
         <div className="container">
           <div className="text-center py-5">
             <h1 style={{ fontWeight: "700" }}>HAVE SOME QUESTIONS?</h1>

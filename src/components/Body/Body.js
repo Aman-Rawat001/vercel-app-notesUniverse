@@ -7,6 +7,7 @@ import UploadNotes from "./UploadNotes/UploadNotes.js";
 import ContactAdmin from "./ContactAdmin/ContactAdmin.js";
 import Navbar from "./Navbar/Navbar";
 import HomePage from "./HomePage/Homepage.js";
+import Footer from "./Footer/Footer.js"
 
 const Body = () => {
   return (
@@ -18,6 +19,7 @@ const Body = () => {
         <Route exact path="/upload_notes" component={UploadNotes} />
         <Route exact path="/contact" component={ContactAdmin} />
       </Switch>
+      <Footer/>
     </>
   );
 };

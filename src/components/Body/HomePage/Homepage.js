@@ -35,7 +35,7 @@ const Homepage = () => {
         </div>
       </div>
       <section className="section-1 pt-5">
-        <div className="container">
+        <div className="container pt-5">
           <div className="row">
             <div className="col-md-6 leftContent">
               <img src={sectionImg1} alt="Image" />
@@ -62,7 +62,7 @@ const Homepage = () => {
         <div className="container-fluid section-2">
           <div className="row">
             <div className="col-md-6 leftBox">
-              <div className="my-5 mx-auto">
+              <div className="my-5 py-4 mx-auto">
                 <h5>Start Improving your grades</h5>
                 <p>
                   Search through thousands of high quality grades notes and
@@ -73,7 +73,7 @@ const Homepage = () => {
               </div>
             </div>
             <div className="col-md-6 rightBox">
-              <div className="my-5 ms-5">
+              <div className="my-5 py-4 ms-5">
                 <h5>Start Improving your grades</h5>
                 <p>
                   Search through thousands of high quality grades notes and
