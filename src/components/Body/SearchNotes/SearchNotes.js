@@ -34,7 +34,7 @@ const SearchNotes = () => {
               />
               <button
                 className="btn btn-outline-success searchBar_btn"
-                style={{ backgroundColor: "green", color: "white" }}
+                style={{ backgroundColor: "rgb(41 98 184)", color: "white" }}
                 type="submit"
               >
                 Search
