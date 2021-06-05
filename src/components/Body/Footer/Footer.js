@@ -25,12 +25,12 @@ const Footer = () => {
                   <p>Search Notes</p>
                   <p>Upload Notes</p>
                 </div>
-                <div className="ms-4">
+                <div className="ps-4 mobileMargin">
                     <p>Career</p>
                     <p>Privacy</p>
                     <p>Terms & Conditions</p>
                 </div>
-                <div className="ms-4">
+                <div className="ps-4 mobileMargin">
                     <p>Endrosments</p>
                     <p>Contact Admin</p>
                     

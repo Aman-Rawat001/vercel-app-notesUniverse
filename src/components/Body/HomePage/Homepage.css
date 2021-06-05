@@ -109,3 +109,21 @@
 .homepage .section-3 .contentBox h3 {
   font-size: 1.2rem;
 }
+
+@media screen and (max-width: 575px) {
+  .homepage .section-1 .leftContent img {
+    margin-bottom: 1rem;
+  }
+  .homepage .section-1 .section1_block2 {
+    margin-top: 1rem;
+  }
+  .homepage .section-2 .rightBox > div {
+    margin-left: 0px !important;
+  }
+  .homepage .section-3 .contentBox > div {
+    text-align: center;
+  }
+  .homepage .section-3 .contentBox {
+    padding-left: 0;
+  }
+}

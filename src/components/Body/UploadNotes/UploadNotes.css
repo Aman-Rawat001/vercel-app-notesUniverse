@@ -1,7 +1,17 @@
 .uploadNotesBG {
-  background-image: linear-gradient(to right, #b3c3db, #b3c3db);
+  background-image: linear-gradient(to right, #729ad7, #6db0df3d);
   margin-top: 4rem;
+  z-index: -2;
 }
+.uploadNotesBG .bgImg {
+  position: absolute;
+  width: 81%;
+  left: 50%;
+  z-index: -3;
+  opacity: 0.3;
+  transform: translateX(-50%);
+}
+
 .uploadNotesBG .form_box {
   color: white;
   text-shadow: 1px 1px gray;
@@ -11,6 +21,9 @@
 }
 .uploadNotesBG .form_box form {
   padding-top: 4em;
+  background-color: #0010358f;
+  border-radius: 12px;
+  padding: 1rem;
 }
 .uploadNotesBG .form_box form input {
   margin-top: 0.5rem;

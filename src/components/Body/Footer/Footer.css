@@ -23,3 +23,9 @@
   font-size: 0.9rem;
   margin: 8px;
 }
+
+@media screen and (max-width: 575px) {
+  .footer .mobileMargin {
+    margin-left: -1rem;
+  }
+}
