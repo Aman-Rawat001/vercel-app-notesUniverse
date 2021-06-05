@@ -16,6 +16,9 @@
   background-color: #4883db;
   color: white;
 }
+.footer .leftContent button:hover {
+  background-color: #186ff0;
+}
 .footer p {
   font-size: 0.9rem;
   margin: 8px;

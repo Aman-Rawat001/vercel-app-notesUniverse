@@ -73,3 +73,39 @@
 .homepage .section-2 button:hover {
   background-color: #2d2dba;
 }
+.homepage .section-1 .contentWrite p {
+  color: gray;
+}
+.homepage .section-1 .contentWrite {
+  max-width: 33rem;
+}
+.homepage .section-1 .contentWrite button {
+  background-color: #4883db;
+}
+.homepage .section-1 .contentWrite button:hover {
+  background-color: rgb(75, 75, 235);
+}
+
+.homepage .section-3 img {
+  width: 10rem;
+}
+.homepage .section-3 .contentBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 4rem;
+}
+.section-3 {
+  background-color: aliceblue;
+}
+.homepage .section-3 .contentBox > div {
+  margin-top: 2.5rem;
+  text-align: left;
+}
+.homepage .section-3 .contentBox p {
+  color: gray;
+}
+.homepage .section-3 .contentBox h3 {
+  font-size: 1.2rem;
+}
