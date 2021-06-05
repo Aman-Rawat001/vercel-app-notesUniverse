@@ -4,6 +4,24 @@ import "./Navbar.css";
 import logo from "../../../images/tempLogo.svg";
 
 const Navbar = () => {
+  // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 80 ||
+      document.documentElement.scrollTop > 80
+    ) {
+      document.getElementById("navbar").style.padding = "1px 10px";
+      // document.getElementById("logo").style.fontSize = "25px";
+    } else {
+      document.getElementById("navbar").style.padding = "10px 10px";
+      // document.getElementById("logo").style.fontSize = "35px";
+    }
+  }
+
   const history = useHistory();
   //non optimized code.
   useEffect(() => {
@@ -35,7 +53,10 @@ const Navbar = () => {
   };
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light navigationBar">
+      <nav
+        className="navbar navbar-expand-lg navbar-light bg-light navigationBar"
+        id="navbar"
+      >
         <div className="container-fluid">
           <a className="navbar-brand ms-3" href="#">
             <div

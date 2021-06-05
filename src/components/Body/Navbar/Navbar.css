@@ -8,6 +8,10 @@
   z-index: 999;
   top: 0;
 }
+#navbar {
+  padding: 10px 10px;
+  transition: 0.4s;
+}
 .navigationBar .navbar-nav {
   display: flex;
   justify-content: center;
