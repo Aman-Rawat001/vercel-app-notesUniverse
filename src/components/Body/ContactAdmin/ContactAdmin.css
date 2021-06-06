@@ -26,3 +26,10 @@
 .contactAdmin form textarea {
   border-radius: 1rem;
 }
+
+@media screen and (max-width: 575px) {
+  .contactAdmin div .contactAdminSVG {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

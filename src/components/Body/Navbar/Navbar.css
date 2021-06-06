@@ -40,6 +40,13 @@
   border-bottom: 5px solid #658ac2 !important;
 }
 
+.navbar-light .navbar-toggler {
+  color: transparent;
+  border: 1px solid #d1c6c6;
+  border-radius: 4rem;
+  outline: none;
+}
+
 @media screen and (max-width: 850px) {
   .navigationBar .navbar_item a {
     font-size: 1.2rem;

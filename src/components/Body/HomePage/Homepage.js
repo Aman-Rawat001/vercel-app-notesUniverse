@@ -7,6 +7,7 @@ import easyTransfer from "../../../images/easyTransfer.svg";
 import learning from "../../../images/learning.svg";
 import quickLearning from "../../../images/quickLearning.svg";
 import worldWide from "../../../images/worldWide.svg";
+import { NavLink } from "react-router-dom";
 
 const Homepage = () => {
   return (
@@ -20,9 +21,11 @@ const Homepage = () => {
               Get high quality varified notes from your school, professional
               course or university.
             </h1>
-            <button className="btn btn-outline-success mt-4 heroScreen_btn">
-              Search Notes
-            </button>
+            <NavLink to="/search_notes">
+              <button className="btn btn-outline-success mt-4 heroScreen_btn">
+                Search Notes
+              </button>
+            </NavLink>
           </div>
         </div>
         <div className="col-md-6 rightColumn">
@@ -32,9 +35,11 @@ const Homepage = () => {
               Upload quality notes from your school, professional course or
               university.
             </h1>
-            <button className="btn btn-outline-success mt-4 heroScreen_btn">
-              Upload Notes
-            </button>
+            <NavLink to="/upload_notes">
+              <button className="btn btn-outline-success mt-4 heroScreen_btn">
+                Upload Notes
+              </button>
+            </NavLink>
           </div>
         </div>
       </div>

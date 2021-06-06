@@ -42,7 +42,7 @@ const SearchNotes = () => {
             </form>
             {/* dropdowns */}
             <div className="dropdown_menu row">
-              <div className="dropdown col-md-3 col-sm-6 col-12 search_dropdown">
+              <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
                 <button
                   className="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -63,7 +63,7 @@ const SearchNotes = () => {
                   </li>
                 </ul>
               </div>
-              <div className="dropdown col-md-3 col-sm-6 col-12 search_dropdown">
+              <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
                 <button
                   className="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -84,7 +84,7 @@ const SearchNotes = () => {
                   </li>
                 </ul>
               </div>
-              <div className="dropdown col-md-3 col-sm-6 col-12 search_dropdown">
+              <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
                 <button
                   className="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -143,7 +143,7 @@ const SearchNotes = () => {
                   </li>
                 </ul>
               </div>
-              <div className="dropdown col-md-3 col-sm-6 col-12 search_dropdown">
+              <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
                 <button
                   className="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -254,7 +254,7 @@ const SearchNotes = () => {
                 </div>
               </div>
               {/* RHS Stuff */}
-              <div className="col-md-2 col-sm-12 col-12">
+              <div className="col-md-2 col-sm-12 col-12 leftCorner">
                 <div className="card ">
                   <div className="card-header rhs_card_header">
                     Top Institutes

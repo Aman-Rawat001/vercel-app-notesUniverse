@@ -113,17 +113,24 @@
 @media screen and (max-width: 575px) {
   .homepage .section-1 .leftContent img {
     margin-bottom: 1rem;
+    margin-top: 5rem;
   }
   .homepage .section-1 .section1_block2 {
     margin-top: 1rem;
   }
   .homepage .section-2 .rightBox > div {
-    margin-left: 0px !important;
+    margin-left: auto !important;
+    margin-right: auto;
   }
   .homepage .section-3 .contentBox > div {
     text-align: center;
   }
   .homepage .section-3 .contentBox {
     padding-left: 0;
+  }
+  .homepage .leftColumn,
+  .homepage .rightColumn {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
