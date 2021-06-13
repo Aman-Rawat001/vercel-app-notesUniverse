@@ -1,8 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ContactAdmin.css";
 import socialMediaImg from "../../../images/socialMedia.svg";
+import firebase from "../../../firebase";
 
 const ContactAdmin = () => {
+  const db = firebase.firestore();
+  const [contactDetails, setContactDetails] = useState({
+    name: "",
+    email: "",
+    college: "",
+    question: "",
+  });
+  let contactName, contactValue;
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    contactName = e.target.name;
+    contactValue = e.target.value;
+    setContactDetails({ ...contactDetails, [contactName]: contactValue });
+  };
+  const sendDetails = (e) => {
+    e.preventDefault();
+    if (
+      !contactDetails.name ||
+      !contactDetails.email ||
+      !contactDetails.college ||
+      !contactDetails.question
+    ) {
+      alert("Please fill all the fields");
+    } else {
+      console.log(contactDetails);
+      db.collection("Student_Queries")
+        .add({
+          name: contactDetails.name,
+          email: contactDetails.email,
+          college: contactDetails.college,
+          question: contactDetails.question,
+        })
+        .then(() => {
+          alert("Your Query has been successfully deliverd");
+          console.log("submitted");
+        })
+        .catch((err) => {
+          console.log("submittion error: " + err);
+          alert(err);
+        });
+    }
+  };
+
   return (
     <div>
       <section className="contactAdmin mb-5">
@@ -22,22 +66,27 @@ const ContactAdmin = () => {
                     <form>
                       <div className="mb-3">
                         <input
+                          onChange={handleInputChange}
                           type="text"
+                          name="name"
                           className="form-control"
                           placeholder="Your Name"
-                          aria-describedby="emailHelp"
                         />
                       </div>
                       <div className="mb-3">
                         <input
+                          onChange={handleInputChange}
                           type="email"
+                          name="email"
                           className="form-control"
                           placeholder="Your Email"
                         />
                       </div>
                       <div className="mb-3">
                         <input
+                          onChange={handleInputChange}
                           type="text"
+                          name="college"
                           className="form-control"
                           placeholder="Your College"
                           aria-describedby="emailHelp"
@@ -46,13 +95,19 @@ const ContactAdmin = () => {
 
                       <div className="mb-3">
                         <textarea
+                          onChange={handleInputChange}
+                          name="question"
                           className="form-control"
                           placeholder="Your Question..."
                           rows="3"
                         ></textarea>
                       </div>
 
-                      <button type="submit" className="btn btn-primary sendmsg">
+                      <button
+                        onClick={sendDetails}
+                        // type="submit"
+                        className="btn btn-primary sendmsg"
+                      >
                         Send Message
                       </button>
                     </form>
