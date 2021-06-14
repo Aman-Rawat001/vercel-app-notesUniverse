@@ -1,9 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import "./UploadNotes.css";
 import backgroundWall from "../../../images/backgroundWall.png";
-import firebase from "../../../firebase";
+import firebase, { storage } from "../../../firebase";
 
 const UploadNotes = () => {
+  const db = firebase.firestore();
+  const [progressBar, setProgressBar] = useState("0");
+  const [PDF, setPDF] = useState("");
+  const [selectedSubject, setSelectedSubject] = useState("null");
+  const [selectedSemester, setSelectedSemester] = useState("null");
+
+  const [uploadDetail, setUploadDetails] = useState({
+    name: "",
+    email: "",
+    chapter: "",
+  });
+
+  let name, value;
+  const handleUpload = (event) => {
+    name = event.target.name;
+    value = event.target.value;
+    setUploadDetails({ ...uploadDetail, [name]: value });
+    const e = document.getElementById("select_sub");
+    var selectedSub = e.options[e.selectedIndex].text;
+    setSelectedSubject(selectedSub);
+    console.log(selectedSubject);
+    const val = document.getElementById("select_sem");
+    var selectedSem = val.options[val.selectedIndex].text;
+    setSelectedSemester(selectedSem);
+  };
+
+  const UploadPDF = (e) => {
+    e.preventDefault();
+    console.log("clicked");
+    if (PDF === null) return;
+    storage
+      .ref(`/images/${PDF.name}`)
+      .put(PDF)
+      .on("state_changed", (snapshot) => {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgressBar(progress);
+        console.log(progress);
+
+        if (progress === 100) {
+          // Getting Download Link
+          storage
+            .ref("images")
+            .child(PDF.name)
+            .getDownloadURL()
+            .then((url) => {
+              console.log("file url: " + url);
+              // getting file name.
+              var httpsReference = storage.refFromURL(url);
+              // console.log("file name: " + httpsReference.name);
+
+              db.collection("Notes_Data")
+                .add({
+                  name: uploadDetail.name,
+                  email: uploadDetail.email,
+                  chapter: uploadDetail.chapter,
+                  subject: selectedSubject,
+                  semester: selectedSemester,
+                  file_name: httpsReference.name,
+                  pdfLink: url,
+                })
+                .then(() => {
+                  alert("File has been successfully uploaded");
+                })
+                .catch((err) => {
+                  console.log("error occured: ");
+                  alert(err);
+                });
+            });
+        }
+      });
+  };
+
   return (
     <>
       <div className="container-fluid uploadNotesBG">
@@ -21,6 +93,9 @@ const UploadNotes = () => {
               <label className="col-sm-2 col-form-label">Your Name</label>
               <div className="col-sm-10">
                 <input
+                  name="name"
+                  value={uploadDetail.name}
+                  onChange={handleUpload}
                   type="text"
                   className="form-control"
                   placeholder="Your Name"
@@ -31,6 +106,9 @@ const UploadNotes = () => {
               <label className="col-sm-2 col-form-label">Your Email</label>
               <div className="col-sm-10">
                 <input
+                  name="email"
+                  value={uploadDetail.email}
+                  onChange={handleUpload}
                   type="email"
                   className="form-control"
                   placeholder="Your Email"
@@ -41,6 +119,9 @@ const UploadNotes = () => {
               <label className="col-sm-2 col-form-label">Chapter Name</label>
               <div className="col-sm-10">
                 <input
+                  name="chapter"
+                  value={uploadDetail.chapter}
+                  onChange={handleUpload}
                   type="text"
                   className="form-control"
                   placeholder="Chapter Name"
@@ -53,6 +134,8 @@ const UploadNotes = () => {
                 <div className="dropdown_menu my-2 ">
                   <label>Select SUB</label>
                   <select
+                    name="subject"
+                    id="select_sub"
                     className="form-select"
                     aria-label="Default select example"
                   >
@@ -77,6 +160,8 @@ const UploadNotes = () => {
                 <div className="dropdown_menu my-2 mt-3 ">
                   <label>Select SEM</label>
                   <select
+                    name="semester"
+                    id="select_sem"
                     className="form-select"
                     aria-label="Default select example"
                   >
@@ -95,10 +180,14 @@ const UploadNotes = () => {
             </div>
             <div className="form-group mt-2">
               <label className="me-2" for="exampleFormControlFile1">
-                Upload Your Notes
+                Upload Notes/pdf
               </label>
               <input
                 type="file"
+                accept="application/pdf"
+                onChange={(e) => {
+                  setPDF(e.target.files[0]);
+                }}
                 className="form-control-file chooseFileInput"
                 id="exampleFormControlFile1"
               />
@@ -107,7 +196,10 @@ const UploadNotes = () => {
               className="w-80 mx-auto"
               style={{ color: "white", opacity: "1" }}
             />
-            <button className="btn btn-outline-success upload_notes_btn mt-3">
+            <button
+              onClick={UploadPDF}
+              className="btn btn-outline-success upload_notes_btn mt-3"
+            >
               Upload Notes
             </button>
           </form>
