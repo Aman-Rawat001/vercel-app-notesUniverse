@@ -1,12 +1,13 @@
 import React from "react";
 import "./UploadNotes.css";
 import backgroundWall from "../../../images/backgroundWall.png";
+import firebase from "../../../firebase";
 
 const UploadNotes = () => {
   return (
     <>
       <div className="container-fluid uploadNotesBG">
-        <img className="bgImg" src={backgroundWall} alt="bgimage"/>
+        <img className="bgImg" src={backgroundWall} alt="bgimage" />
         <div className="container form_box layer">
           <div className="content1">
             <h3>Upload Notes</h3>

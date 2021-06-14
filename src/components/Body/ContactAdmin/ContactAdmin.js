@@ -38,7 +38,13 @@ const ContactAdmin = () => {
         })
         .then(() => {
           alert("Your Query has been successfully deliverd");
-          console.log("submitted");
+          // console.log("submitted");
+          setContactDetails({
+            name: "",
+            email: "",
+            college: "",
+            question: ""
+          })
         })
         .catch((err) => {
           console.log("submittion error: " + err);
@@ -67,6 +73,7 @@ const ContactAdmin = () => {
                       <div className="mb-3">
                         <input
                           onChange={handleInputChange}
+                          value={contactDetails.name}
                           type="text"
                           name="name"
                           className="form-control"
@@ -76,6 +83,7 @@ const ContactAdmin = () => {
                       <div className="mb-3">
                         <input
                           onChange={handleInputChange}
+                          value={contactDetails.email}
                           type="email"
                           name="email"
                           className="form-control"
@@ -85,6 +93,7 @@ const ContactAdmin = () => {
                       <div className="mb-3">
                         <input
                           onChange={handleInputChange}
+                          value={contactDetails.college}
                           type="text"
                           name="college"
                           className="form-control"
@@ -96,6 +105,7 @@ const ContactAdmin = () => {
                       <div className="mb-3">
                         <textarea
                           onChange={handleInputChange}
+                          value={contactDetails.question}
                           name="question"
                           className="form-control"
                           placeholder="Your Question..."
