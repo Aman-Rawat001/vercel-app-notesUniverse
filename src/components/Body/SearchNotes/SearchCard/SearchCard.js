@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchCard.css";
 import img from "../../../../images/demoimage.jpeg";
-const SearchCard = () => {
+const SearchCard = (props) => {
   return (
     <>
       <div className="searchCard my-2">
@@ -18,11 +18,15 @@ const SearchCard = () => {
               className="card_content ps-1"
               style={{ backgroundColor: "rgb(218 229 246)" }}
             >
-              <p className="ch_name">Chapter Name</p>
-              <p className="course">B.Tech cse 4-Sem . 2021</p>
+              <p>Notes no: {props.num}</p>
+              <p className="ch_name">{props.chName}</p>
+              <p className="course">B.Tech cse {props.semName} . 2021</p>
               <p className="credit">
-                Credit: <span>Aman Rawat</span>
+                Uploded by: <span>{props.name}</span>
               </p>
+              <a href={props.pdfLink}>Access Note</a>
+              <p>fileName: {props.file_name}</p>
+              <p>SubName: {props.subName}</p>
             </div>
           </div>
         </div>

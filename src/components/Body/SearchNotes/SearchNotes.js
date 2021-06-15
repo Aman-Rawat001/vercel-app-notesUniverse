@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchNotes.css";
 import SearchCard from "./SearchCard/SearchCard.js";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
+import firebase from "../../../firebase";
+
 const SearchNotes = () => {
-  const [user, setUser] = useState([]);
+  const db = firebase.firestore();
+  const [fetchedSem, setFetchedSem] = useState("");
+  const [fetchNotes, setFetchNotes] = useState([]);
+
+  const handleNotesSearch = () => {
+    const e = document.getElementById("selectSem");
+    var selectedSem = e.options[e.selectedIndex].text;
+    setFetchedSem(selectedSem);
+  };
+
+  const usersArray = [];
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const response = db.collection("Notes_Data");
+    const filter = await response.where("semester", "==", fetchedSem);
+    const data = await filter.get();
+    data.docs.forEach((item) => {
+      var tempUsers = {
+        id: item.id,
+        pdfLink: item.data().pdfLink,
+        name: item.data().name,
+        chapter: item.data().chapter,
+        semester: item.data().semester,
+        subject: item.data().subject,
+        fileName: item.data().file_name,
+      };
+      usersArray.push(tempUsers);
+    });
+    console.log(usersArray);
+    setFetchNotes(usersArray);
+  };
 
   return (
     <>
@@ -35,6 +66,7 @@ const SearchNotes = () => {
                 aria-label="Search"
               />
               <button
+                onClick={handleSearch}
                 className="btn btn-outline-success searchBar_btn"
                 style={{ backgroundColor: "rgb(41 98 184)", color: "white" }}
                 type="submit"
@@ -68,8 +100,9 @@ const SearchNotes = () => {
               </div>
               <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
                 <select
+                  onChange={handleNotesSearch}
                   name="semester"
-                  id="select_sem"
+                  id="selectSem"
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
@@ -125,24 +158,21 @@ const SearchNotes = () => {
                   marginBottom: "1rem",
                 }}
               >
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
+                {fetchNotes.map((user, index) => {
+                  return (
+                    <div className="col-md-4 col-sm-6 col-12 search_card_box">
+                      <SearchCard
+                        num={index + 1}
+                        chName={user.chapter}
+                        semName={user.semester}
+                        subName={user.subject}
+                        name={user.name}
+                        pdfLink={user.pdfLink}
+                        file_name={user.fileName}
+                      />
+                    </div>
+                  );
+                })}
               </div>
               {/* RHS Stuff */}
               <div className="col-md-2 col-sm-12 col-12 leftCorner">

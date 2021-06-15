@@ -25,6 +25,7 @@
 .homepage .leftColumn > div,
 .homepage .rightColumn > div {
   max-width: 35rem;
+  z-index: 1;
 }
 
 .homepage .heroScreen .heroScreen_btn {
