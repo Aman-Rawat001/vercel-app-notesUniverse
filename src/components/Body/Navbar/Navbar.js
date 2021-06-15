@@ -86,42 +86,42 @@ const Navbar = () => {
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="listmydiv">
-              <li
-                className="navbar_item"
-                id="linkOne"
-                onClick={() => handleClick("1")}
-              >
-                <NavLink className="navbar_link" aria-current="page" to="/">
+              <NavLink className="navbar_link" aria-current="page" to="/">
+                <li
+                  className="navbar_item"
+                  id="linkOne"
+                  onClick={() => handleClick("1")}
+                >
                   Home
-                </NavLink>
-              </li>
-              <li
-                className="navbar_item"
-                id="linkTwo"
-                onClick={() => handleClick("2")}
-              >
-                <NavLink className="navbar_link" to="/search_notes">
+                </li>
+              </NavLink>
+              <NavLink className="navbar_link" to="/search_notes">
+                <li
+                  className="navbar_item"
+                  id="linkTwo"
+                  onClick={() => handleClick("2")}
+                >
                   Search Notes
-                </NavLink>
-              </li>
-              <li
-                className="navbar_item"
-                id="linkThree"
-                onClick={() => handleClick("3")}
-              >
-                <NavLink className="navbar_link" to="/upload_notes">
+                </li>
+              </NavLink>
+              <NavLink className="navbar_link" to="/upload_notes">
+                <li
+                  className="navbar_item"
+                  id="linkThree"
+                  onClick={() => handleClick("3")}
+                >
                   Upload Notes
-                </NavLink>
-              </li>
-              <li
-                className="navbar_item"
-                id="linkFour"
-                onClick={() => handleClick("4")}
-              >
-                <NavLink className="navbar_link" to="/contact">
+                </li>
+              </NavLink>
+              <NavLink className="navbar_link" to="/contact">
+                <li
+                  className="navbar_item"
+                  id="linkFour"
+                  onClick={() => handleClick("4")}
+                >
                   Contact Admin
-                </NavLink>
-              </li>
+                </li>
+              </NavLink>
             </ul>
           </div>
         </div>

@@ -3,6 +3,7 @@ import "./ContactAdmin.css";
 import socialMediaImg from "../../../images/socialMedia.svg";
 import firebase from "../../../firebase";
 
+// analytics.logEvent("ContactAdmin_page_views");
 const ContactAdmin = () => {
   const db = firebase.firestore();
   const [contactDetails, setContactDetails] = useState({
@@ -43,8 +44,8 @@ const ContactAdmin = () => {
             name: "",
             email: "",
             college: "",
-            question: ""
-          })
+            question: "",
+          });
         })
         .catch((err) => {
           console.log("submittion error: " + err);

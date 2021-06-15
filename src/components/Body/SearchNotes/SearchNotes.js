@@ -8,6 +8,7 @@ const SearchCard = lazy(() => import("./SearchCard/SearchCard.js"));
 
 import firebase from "../../../firebase";
 
+// analytics.logEvent("SearchNotes_page_views");
 const SearchNotes = () => {
   const db = firebase.firestore();
   const [fetchedSem, setFetchedSem] = useState("");

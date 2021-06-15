@@ -33,9 +33,11 @@
   background-color: white;
   text-transform: uppercase;
   outline: none;
+  border: none;
 }
 .homepage .heroScreen .heroScreen_btn:hover {
-  color: black;
+  /* color: black; */
+  background-color: #1163df;
 }
 .homepage .rightColumn {
   background-color: #4883db;

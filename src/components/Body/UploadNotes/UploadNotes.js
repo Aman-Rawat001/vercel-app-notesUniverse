@@ -3,6 +3,7 @@ import "./UploadNotes.css";
 import backgroundWall from "../../../images/backgroundWall.png";
 import firebase, { storage } from "../../../firebase";
 
+// analytics.logEvent("UploadNotes_page_views");
 const UploadNotes = () => {
   const db = firebase.firestore();
   const [progressBar, setProgressBar] = useState("0");

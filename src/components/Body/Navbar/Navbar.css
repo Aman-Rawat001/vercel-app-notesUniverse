@@ -22,19 +22,24 @@
   width: 2rem;
 }
 .navigationBar .navbar_item {
+  color: gray;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   border-bottom: 5px solid transparent;
   border-top: 5px solid transparent;
+  font-size: 1.1rem;
+}
+.navigationBar .navbar_link {
+  text-decoration: none;
 }
 .navigationBar .navbar_item:hover {
   border-bottom: 5px solid #658ac2;
 }
-.navigationBar .navbar_item a {
+/* .navigationBar .navbar_item a {
   color: gray;
   text-decoration: none;
   font-size: 1.1rem;
-}
+} */
 .clickActive {
   background-color: #dadef0;
   border-bottom: 5px solid #658ac2 !important;
