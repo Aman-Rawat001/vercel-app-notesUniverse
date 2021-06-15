@@ -12,7 +12,6 @@ const SearchNotes = () => {
   const db = firebase.firestore();
   const [fetchedSem, setFetchedSem] = useState("");
   const [fetchNotes, setFetchNotes] = useState([]);
-  document.getElementById("nothingFound").style.display = "none";
 
   const handleNotesSearch = () => {
     const e = document.getElementById("selectSem");
@@ -177,7 +176,7 @@ const SearchNotes = () => {
                 </div>
 
                 {/* nothing found */}
-                <div id="nothingFound">
+                <div id="nothingFound" style={{ display: "none" }}>
                   <p>Nothing Found</p>
                   <p>Try again by selecting different parameters.</p>
                 </div>
