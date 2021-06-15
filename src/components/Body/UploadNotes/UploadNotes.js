@@ -24,7 +24,6 @@ const UploadNotes = () => {
     const e = document.getElementById("select_sub");
     var selectedSub = e.options[e.selectedIndex].text;
     setSelectedSubject(selectedSub);
-    console.log(selectedSubject);
     const val = document.getElementById("select_sem");
     var selectedSem = val.options[val.selectedIndex].text;
     setSelectedSemester(selectedSem);
@@ -32,48 +31,66 @@ const UploadNotes = () => {
 
   const UploadPDF = (e) => {
     e.preventDefault();
-    console.log("clicked");
-    if (PDF === null) return;
-    storage
-      .ref(`/images/${PDF.name}`)
-      .put(PDF)
-      .on("state_changed", (snapshot) => {
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgressBar(progress);
-        console.log(progress);
+    // console.log("clicked");
+    if (
+      !uploadDetail.name ||
+      !uploadDetail.email ||
+      !uploadDetail.chapter ||
+      !selectedSemester ||
+      !selectedSubject
+    ) {
+      alert("Please fill all the fields");
+    } else {
+      if (PDF === null) return;
+      storage
+        .ref(`/images/${PDF.name}`)
+        .put(PDF)
+        .on("state_changed", (snapshot) => {
+          var progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setProgressBar(progress);
+          // console.log(progress);
 
-        if (progress === 100) {
-          // Getting Download Link
-          storage
-            .ref("images")
-            .child(PDF.name)
-            .getDownloadURL()
-            .then((url) => {
-              console.log("file url: " + url);
-              // getting file name.
-              var httpsReference = storage.refFromURL(url);
-              // console.log("file name: " + httpsReference.name);
+          if (progress === 100) {
+            // Getting Download Link
+            storage
+              .ref("images")
+              .child(PDF.name)
+              .getDownloadURL()
+              .then((url) => {
+                console.log("file url: " + url);
+                // getting file name.
+                var httpsReference = storage.refFromURL(url);
+                // console.log("file name: " + httpsReference.name);
 
-              db.collection("Notes_Data")
-                .add({
-                  name: uploadDetail.name,
-                  email: uploadDetail.email,
-                  chapter: uploadDetail.chapter,
-                  subject: selectedSubject,
-                  semester: selectedSemester,
-                  file_name: httpsReference.name,
-                  pdfLink: url,
-                })
-                .then(() => {
-                  alert("File has been successfully uploaded");
-                })
-                .catch((err) => {
-                  console.log("error occured: ");
-                  alert(err);
-                });
-            });
-        }
-      });
+                db.collection("Notes_Data")
+                  .add({
+                    name: uploadDetail.name,
+                    email: uploadDetail.email,
+                    chapter: uploadDetail.chapter,
+                    subject: selectedSubject,
+                    semester: selectedSemester,
+                    file_name: httpsReference.name,
+                    pdfLink: url,
+                  })
+                  .then(() => {
+                    alert("File has been successfully uploaded");
+                    setUploadDetails({
+                      name: "",
+                      email: "",
+                      chapter: "",
+                    });
+                    setProgressBar("0");
+                    setPDF("");
+                  })
+                  .catch((err) => {
+                    console.log("error occured: ");
+                    alert(err);
+                  });
+              });
+          }
+        });
+    }
   };
 
   return (
@@ -134,6 +151,7 @@ const UploadNotes = () => {
                 <div className="dropdown_menu my-2 ">
                   <label>Select SUB</label>
                   <select
+                    onClick={handleUpload}
                     name="subject"
                     id="select_sub"
                     className="form-select"
@@ -160,6 +178,7 @@ const UploadNotes = () => {
                 <div className="dropdown_menu my-2 mt-3 ">
                   <label>Select SEM</label>
                   <select
+                    onClick={handleUpload}
                     name="semester"
                     id="select_sem"
                     className="form-select"
@@ -202,6 +221,11 @@ const UploadNotes = () => {
             >
               Upload Notes
             </button>
+            <progress
+              className="uploadProgress"
+              value={progressBar}
+              max="100"
+            />
           </form>
         </div>
       </div>
