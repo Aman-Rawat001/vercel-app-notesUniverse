@@ -12,6 +12,7 @@ const SearchNotes = () => {
   const db = firebase.firestore();
   const [fetchedSem, setFetchedSem] = useState("");
   const [fetchNotes, setFetchNotes] = useState([]);
+  document.getElementById("nothingFound").style.display = "none";
 
   const handleNotesSearch = () => {
     const e = document.getElementById("selectSem");
@@ -22,6 +23,10 @@ const SearchNotes = () => {
   const usersArray = [];
   const handleSearch = async (e) => {
     e.preventDefault();
+    // removing before screen.
+    document.getElementById("beforeScreen").style.display = "none";
+
+    // getting data from firebase database.
     const response = db.collection("Notes_Data");
     const filter = await response.where("semester", "==", fetchedSem);
     const data = await filter.get();
@@ -38,7 +43,12 @@ const SearchNotes = () => {
       usersArray.push(tempUsers);
     });
     console.log(usersArray);
-    setFetchNotes(usersArray);
+    if (usersArray.length === 0) {
+      document.getElementById("nothingFound").style.display = "block";
+    } else {
+      document.getElementById("nothingFound").style.display = "none";
+      setFetchNotes(usersArray);
+    }
   };
 
   return (
@@ -64,7 +74,8 @@ const SearchNotes = () => {
                 }}
                 className="form-control me-2"
                 type="search"
-                placeholder="Search notes and course guides"
+                value={""}
+                placeholder="Select fields below..."
                 aria-label="Search"
               />
               <button
@@ -160,6 +171,18 @@ const SearchNotes = () => {
                   marginBottom: "1rem",
                 }}
               >
+                {/* before screen */}
+                <div id="beforeScreen">
+                  <p>Select all the fields and press search button.</p>
+                </div>
+
+                {/* nothing found */}
+                <div id="nothingFound">
+                  <p>Nothing Found</p>
+                  <p>Try again by selecting different parameters.</p>
+                </div>
+
+                {/* data from firebase */}
                 <Suspense fallback={<div>Searching...</div>}>
                   {fetchNotes.map((user, index) => {
                     return (

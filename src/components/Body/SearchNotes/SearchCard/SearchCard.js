@@ -6,6 +6,7 @@ const SearchCard = (props) => {
     <>
       <div className="searchCard my-2">
         <div className="card" style={{ maxWidth: "100%" }}>
+          <p className="noteNum">Note no: {props.num}</p>
           <img
             className="notes_image"
             id="noteImg"
@@ -16,23 +17,24 @@ const SearchCard = (props) => {
           <div className="card-body">
             <hr />
             <div
-              className="card_content ps-1"
+              className="card_content px-2 py-1"
               style={{ backgroundColor: "rgb(218 229 246)" }}
             >
-              <p>Note no: {props.num}</p>
+              {" "}
               <p className="ch_name">{props.chName}</p>
               <p className="course">B.Tech cse {props.semName} . 2021</p>
+              {/* <p>fileName: {props.file_name}</p> */}
+              <p>
+                <span style={{ fontWeight: "500" }}>Subject:</span>{" "}
+                {props.subName}
+              </p>
               <p className="credit">
                 Uploded by: <span>{props.name}</span>
               </p>
-              <p>fileName: {props.file_name}</p>
-              <p>SubName: {props.subName}</p>
-              <a href={props.pdfLink} target="_blank">
-                <button className="accessBtn btn btn-success">
-                  Access Note
-                </button>
-              </a>
             </div>
+            <a href={props.pdfLink} target="_blank">
+              <button className="accessBtn btn btn-success">Access Note</button>
+            </a>
           </div>
         </div>
       </div>
