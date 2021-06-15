@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, Suspense, lazy } from "react";
 import "./SearchNotes.css";
-import SearchCard from "./SearchCard/SearchCard.js";
+// import SearchCard from "./SearchCard/SearchCard.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+const SearchCard = lazy(() => import("./SearchCard/SearchCard.js"));
 
 import firebase from "../../../firebase";
 
@@ -158,21 +160,23 @@ const SearchNotes = () => {
                   marginBottom: "1rem",
                 }}
               >
-                {fetchNotes.map((user, index) => {
-                  return (
-                    <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                      <SearchCard
-                        num={index + 1}
-                        chName={user.chapter}
-                        semName={user.semester}
-                        subName={user.subject}
-                        name={user.name}
-                        pdfLink={user.pdfLink}
-                        file_name={user.fileName}
-                      />
-                    </div>
-                  );
-                })}
+                <Suspense fallback={<div>Searching...</div>}>
+                  {fetchNotes.map((user, index) => {
+                    return (
+                      <div className="col-md-4 col-sm-6 col-12 search_card_box">
+                        <SearchCard
+                          num={index + 1}
+                          chName={user.chapter}
+                          semName={user.semester}
+                          subName={user.subject}
+                          name={user.name}
+                          pdfLink={user.pdfLink}
+                          file_name={user.fileName}
+                        />
+                      </div>
+                    );
+                  })}
+                </Suspense>
               </div>
               {/* RHS Stuff */}
               <div className="col-md-2 col-sm-12 col-12 leftCorner">
