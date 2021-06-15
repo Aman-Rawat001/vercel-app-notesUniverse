@@ -1,13 +1,15 @@
 import React from "react";
 import "./SearchCard.css";
-import img from "../../../../images/demoimage.jpeg";
-const SearchCard = () => {
+import img from "../../../../images/notesImage.png";
+const SearchCard = (props) => {
   return (
     <>
       <div className="searchCard my-2">
         <div className="card" style={{ maxWidth: "100%" }}>
+          <p className="noteNum">Note no: {props.num}</p>
           <img
             className="notes_image"
+            id="noteImg"
             src={img}
             className="card-img-top"
             alt="..."
@@ -15,15 +17,24 @@ const SearchCard = () => {
           <div className="card-body">
             <hr />
             <div
-              className="card_content ps-1"
+              className="card_content px-2 py-1"
               style={{ backgroundColor: "rgb(218 229 246)" }}
             >
-              <p className="ch_name">Chapter Name</p>
-              <p className="course">B.Tech cse 4-Sem . 2021</p>
+              {" "}
+              <p className="ch_name">{props.chName}</p>
+              <p className="course">B.Tech cse {props.semName} . 2021</p>
+              {/* <p>fileName: {props.file_name}</p> */}
+              <p>
+                <span style={{ fontWeight: "500" }}>Subject:</span>{" "}
+                {props.subName}
+              </p>
               <p className="credit">
-                Credit: <span>Aman Rawat</span>
+                Uploded by: <span>{props.name}</span>
               </p>
             </div>
+            <a href={props.pdfLink} target="_blank">
+              <button className="accessBtn btn btn-success">Access Note</button>
+            </a>
           </div>
         </div>
       </div>

@@ -1,11 +1,56 @@
-import React from "react";
+import React, { useState, Suspense, lazy } from "react";
 import "./SearchNotes.css";
-import SearchCard from "./SearchCard/SearchCard.js";
-
+// import SearchCard from "./SearchCard/SearchCard.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
+const SearchCard = lazy(() => import("./SearchCard/SearchCard.js"));
+
+import firebase from "../../../firebase";
+
 const SearchNotes = () => {
+  const db = firebase.firestore();
+  const [fetchedSem, setFetchedSem] = useState("");
+  const [fetchNotes, setFetchNotes] = useState([]);
+  document.getElementById("nothingFound").style.display = "none";
+
+  const handleNotesSearch = () => {
+    const e = document.getElementById("selectSem");
+    var selectedSem = e.options[e.selectedIndex].text;
+    setFetchedSem(selectedSem);
+  };
+
+  const usersArray = [];
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    // removing before screen.
+    document.getElementById("beforeScreen").style.display = "none";
+
+    // getting data from firebase database.
+    const response = db.collection("Notes_Data");
+    const filter = await response.where("semester", "==", fetchedSem);
+    const data = await filter.get();
+    data.docs.forEach((item) => {
+      var tempUsers = {
+        id: item.id,
+        pdfLink: item.data().pdfLink,
+        name: item.data().name,
+        chapter: item.data().chapter,
+        semester: item.data().semester,
+        subject: item.data().subject,
+        fileName: item.data().file_name,
+      };
+      usersArray.push(tempUsers);
+    });
+    console.log(usersArray);
+    if (usersArray.length === 0) {
+      document.getElementById("nothingFound").style.display = "block";
+    } else {
+      document.getElementById("nothingFound").style.display = "none";
+      setFetchNotes(usersArray);
+    }
+  };
+
   return (
     <>
       <div
@@ -29,10 +74,12 @@ const SearchNotes = () => {
                 }}
                 className="form-control me-2"
                 type="search"
-                placeholder="Search notes and course guides"
+                value={""}
+                placeholder="Select fields below..."
                 aria-label="Search"
               />
               <button
+                onClick={handleSearch}
                 className="btn btn-outline-success searchBar_btn"
                 style={{ backgroundColor: "rgb(41 98 184)", color: "white" }}
                 type="submit"
@@ -43,180 +90,70 @@ const SearchNotes = () => {
             {/* dropdowns */}
             <div className="dropdown_menu row">
               <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton2"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                <select
+                  name="subject"
+                  id="select_sub"
+                  className="form-select select_dropdown"
+                  aria-label="Default select example"
                 >
-                  Institution
-                </button>
-                <ul
-                  className="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton2"
-                >
-                  <li>
-                    <a className="dropdown-item active" href="#">
-                      Graphic Era University
-                    </a>
-                  </li>
-                </ul>
+                  <option selected>Institution</option>
+                  <option value="1">Graphic era university</option>
+                </select>
               </div>
               <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton2"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                <select
+                  name="subject"
+                  id="select_sub"
+                  className="form-select select_dropdown"
+                  aria-label="Default select example"
                 >
-                  Course
-                </button>
-                <ul
-                  className="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton2"
-                >
-                  <li>
-                    <a className="dropdown-item active" href="#">
-                      B.Tech c.s.e
-                    </a>
-                  </li>
-                </ul>
+                  <option selected>Course</option>
+                  <option value="1">B.tech c.s.e</option>
+                </select>
               </div>
               <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton2"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                <select
+                  onChange={handleNotesSearch}
+                  name="semester"
+                  id="selectSem"
+                  className="form-select select_dropdown"
+                  aria-label="Default select example"
                 >
-                  Semester
-                </button>
-                <ul
-                  className="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton2"
-                >
-                  <li>
-                    <a className="dropdown-item active" href="#">
-                      Semester-1
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Semester-2
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Semester-3
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Semester-4
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Semester-5
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Semester-6
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Semester-7
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Semester-8
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                </ul>
+                  <option selected>Semester</option>
+                  <option value="1">Semester-1</option>
+                  <option value="2">Semester-2</option>
+                  <option value="3">Semester-3</option>
+                  <option value="4">Semester-4</option>
+                  <option value="5">Semester-5</option>
+                  <option value="6">Semester-6</option>
+                  <option value="7">Semester-7</option>
+                  <option value="8">Semester-8</option>
+                </select>
               </div>
               <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
-                <button
-                  className="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton2"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                <select
+                  name="subject"
+                  id="select_sub"
+                  className="form-select select_dropdown"
+                  aria-label="Default select example"
                 >
-                  Subject
-                </button>
-                <ul
-                  className="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton2"
-                >
-                  <li>
-                    <a className="dropdown-item active" href="#">
-                      Fundamentals of computer programming
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Data Structures
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Discrete mathematics
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Database management system
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Theory of computation
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Java programming
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Artificial intelligence(AI)
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Internet of things(IOT)
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Cyber security
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Compiler Design
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Microprocessors and Micrcontrollers
-                    </a>
-                  </li>
-
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                </ul>
+                  <option selected>Subject</option>
+                  <option value="1">
+                    Fundamentals of computer programming
+                  </option>
+                  <option value="2">Data Structures</option>
+                  <option value="3">Discrete mathematics</option>
+                  <option value="4">Database management system</option>
+                  <option value="5">Theory of computation</option>
+                  <option value="6">Java programming</option>
+                  <option value="7">Artificial intelligence(AI)</option>
+                  <option value="8">Internet of things(IOT)</option>
+                  <option value="9">Cyber security</option>
+                  <option value="10">Compiler Design</option>
+                  <option value="11">
+                    Microprocessors and Micrcontrollers
+                  </option>
+                </select>
               </div>
             </div>
             <hr className="my-5" />
@@ -234,24 +171,35 @@ const SearchNotes = () => {
                   marginBottom: "1rem",
                 }}
               >
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
+                {/* before screen */}
+                <div id="beforeScreen">
+                  <p>Select all the fields and press search button.</p>
                 </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
+
+                {/* nothing found */}
+                <div id="nothingFound">
+                  <p>Nothing Found</p>
+                  <p>Try again by selecting different parameters.</p>
                 </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
-                <div className="col-md-4 col-sm-6 col-12 search_card_box">
-                  <SearchCard />
-                </div>
+
+                {/* data from firebase */}
+                <Suspense fallback={<div>Searching...</div>}>
+                  {fetchNotes.map((user, index) => {
+                    return (
+                      <div className="col-md-4 col-sm-6 col-12 search_card_box">
+                        <SearchCard
+                          num={index + 1}
+                          chName={user.chapter}
+                          semName={user.semester}
+                          subName={user.subject}
+                          name={user.name}
+                          pdfLink={user.pdfLink}
+                          file_name={user.fileName}
+                        />
+                      </div>
+                    );
+                  })}
+                </Suspense>
               </div>
               {/* RHS Stuff */}
               <div className="col-md-2 col-sm-12 col-12 leftCorner">
