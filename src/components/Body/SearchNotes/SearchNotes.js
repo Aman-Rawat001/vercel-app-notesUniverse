@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState, Suspense, lazy, useEffect } from "react";
 import "./SearchNotes.css";
 // import SearchCard from "./SearchCard/SearchCard.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,6 +51,9 @@ const SearchNotes = () => {
       analytics.logEvent("Successfull_searches")
     }
   };
+
+  // record search page views in analytics.
+
 
   return (
     <>
