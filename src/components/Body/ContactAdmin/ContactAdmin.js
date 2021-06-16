@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./ContactAdmin.css";
 import socialMediaImg from "../../../images/socialMedia.svg";
-import firebase from "../../../firebase";
+import firebase, {analytics} from "../../../firebase";
 
-// analytics.logEvent("ContactAdmin_page_views");
 const ContactAdmin = () => {
   const db = firebase.firestore();
   const [contactDetails, setContactDetails] = useState({
@@ -39,6 +38,7 @@ const ContactAdmin = () => {
         })
         .then(() => {
           alert("Your Query has been successfully deliverd");
+          analytics.logEvent("Successfull_queries_sent")
           // console.log("submitted");
           setContactDetails({
             name: "",

@@ -6,9 +6,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const SearchCard = lazy(() => import("./SearchCard/SearchCard.js"));
 
-import firebase from "../../../firebase";
+import firebase,{analytics} from "../../../firebase";
 
-// analytics.logEvent("SearchNotes_page_views");
 const SearchNotes = () => {
   const db = firebase.firestore();
   const [fetchedSem, setFetchedSem] = useState("");
@@ -45,9 +44,11 @@ const SearchNotes = () => {
     console.log(usersArray);
     if (usersArray.length === 0) {
       document.getElementById("nothingFound").style.display = "block";
+      analytics.logEvent("Unsuccessfull_searches")
     } else {
       document.getElementById("nothingFound").style.display = "none";
       setFetchNotes(usersArray);
+      analytics.logEvent("Successfull_searches")
     }
   };
 

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./UploadNotes.css";
 import backgroundWall from "../../../images/backgroundWall.png";
-import firebase, { storage } from "../../../firebase";
+import firebase, { storage, analytics } from "../../../firebase";
 
-// analytics.logEvent("UploadNotes_page_views");
 const UploadNotes = () => {
   const db = firebase.firestore();
   const [progressBar, setProgressBar] = useState("0");
@@ -41,6 +40,7 @@ const UploadNotes = () => {
       !selectedSubject
     ) {
       alert("Please fill all the fields");
+      analytics.logEvent("Unsuccessfull_uploads")
     } else {
       if (PDF === null) return;
       storage
@@ -53,6 +53,7 @@ const UploadNotes = () => {
           // console.log(progress);
 
           if (progress === 100) {
+            analytics.logEvent("Successfull_uploads")
             // Getting Download Link
             storage
               .ref("images")
