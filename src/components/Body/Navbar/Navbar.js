@@ -22,55 +22,6 @@ const Navbar = () => {
     }
   }
 
-  const history = useHistory();
-  //non optimized code.
-  useEffect(() => {
-    const activeLink = window.location.pathname;
-    if (activeLink === "/") {
-      document.getElementById("linkOne").classList.add("clickActive");
-      document.getElementById("linkTwo").classList.remove("clickActive");
-      document.getElementById("linkThree").classList.remove("clickActive");
-      document.getElementById("linkFour").classList.remove("clickActive");
-    } else if (activeLink === "/search_notes") {
-      document.getElementById("linkTwo").classList.add("clickActive");
-      document.getElementById("linkOne").classList.remove("clickActive");
-      document.getElementById("linkThree").classList.remove("clickActive");
-      document.getElementById("linkFour").classList.remove("clickActive");
-    } else if (activeLink === "/upload_notes") {
-      document.getElementById("linkThree").classList.add("clickActive");
-      document.getElementById("linkOne").classList.remove("clickActive");
-      document.getElementById("linkTwo").classList.remove("clickActive");
-      document.getElementById("linkFour").classList.remove("clickActive");
-    } else if (activeLink === "/contact") {
-      document.getElementById("linkFour").classList.add("clickActive");
-      document.getElementById("linkOne").classList.remove("clickActive");
-      document.getElementById("linkThree").classList.remove("clickActive");
-      document.getElementById("linkTwo").classList.remove("clickActive");
-    }
-  }, []);
-  const handleClick = (num) => {
-    if (num === "1") {
-      document.getElementById("linkOne").classList.add("clickActive");
-      document.getElementById("linkTwo").classList.remove("clickActive");
-      document.getElementById("linkThree").classList.remove("clickActive");
-      document.getElementById("linkFour").classList.remove("clickActive");
-    } else if (num === "2") {
-      document.getElementById("linkTwo").classList.add("clickActive");
-      document.getElementById("linkOne").classList.remove("clickActive");
-      document.getElementById("linkThree").classList.remove("clickActive");
-      document.getElementById("linkFour").classList.remove("clickActive");
-    } else if (num === "3") {
-      document.getElementById("linkThree").classList.add("clickActive");
-      document.getElementById("linkOne").classList.remove("clickActive");
-      document.getElementById("linkTwo").classList.remove("clickActive");
-      document.getElementById("linkFour").classList.remove("clickActive");
-    } else if (num === "4") {
-      document.getElementById("linkFour").classList.add("clickActive");
-      document.getElementById("linkOne").classList.remove("clickActive");
-      document.getElementById("linkThree").classList.remove("clickActive");
-      document.getElementById("linkTwo").classList.remove("clickActive");
-    }
-  };
   return (
     <div>
       <nav
@@ -106,39 +57,40 @@ const Navbar = () => {
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="listmydiv">
-              <NavLink className="navbar_link" aria-current="page" to="/">
-                <li
-                  className="navbar_item"
-                  id="linkOne"
-                  onClick={() => handleClick("1")}
-                >
+              <NavLink
+                activeClassName="activeLink"
+                className="navbar_link"
+                aria-current="page"
+                to="/"
+              >
+                <li className="navbar_item" id="linkOne">
                   Home
                 </li>
               </NavLink>
-              <NavLink className="navbar_link" to="/search_notes">
-                <li
-                  className="navbar_item"
-                  id="linkTwo"
-                  onClick={() => handleClick("2")}
-                >
+              <NavLink
+                activeClassName="activeLink"
+                className="navbar_link"
+                to="/search_notes"
+              >
+                <li className="navbar_item" id="linkTwo">
                   Search Notes
                 </li>
               </NavLink>
-              <NavLink className="navbar_link" to="/upload_notes">
-                <li
-                  className="navbar_item"
-                  id="linkThree"
-                  onClick={() => handleClick("3")}
-                >
+              <NavLink
+                activeClassName="activeLink"
+                className="navbar_link"
+                to="/upload_notes"
+              >
+                <li className="navbar_item" id="linkThree">
                   Upload Notes
                 </li>
               </NavLink>
-              <NavLink className="navbar_link" to="/contact">
-                <li
-                  className="navbar_item"
-                  id="linkFour"
-                  onClick={() => handleClick("4")}
-                >
+              <NavLink
+                activeClassName="activeLink"
+                className="navbar_link"
+                to="/contact"
+              >
+                <li className="navbar_item" id="linkFour">
                   Contact Admin
                 </li>
               </NavLink>

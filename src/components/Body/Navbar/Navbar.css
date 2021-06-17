@@ -21,7 +21,7 @@
 .navigationBar .logo {
   width: 2rem;
 }
-.navigationBar .navbar_item {
+.navigationBar .navbar_link {
   color: gray;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -32,7 +32,7 @@
 .navigationBar .navbar_link {
   text-decoration: none;
 }
-.navigationBar .navbar_item:hover {
+.navigationBar .navbar_link:hover {
   border-bottom: 5px solid #658ac2;
 }
 /* .navigationBar .navbar_item a {
@@ -40,7 +40,7 @@
   text-decoration: none;
   font-size: 1.1rem;
 } */
-.clickActive {
+.activeLink {
   background-color: #dadef0;
   border-bottom: 5px solid #658ac2 !important;
 }
