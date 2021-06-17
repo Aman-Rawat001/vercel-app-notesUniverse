@@ -23,10 +23,18 @@ const Footer = () => {
               <p>More From Notes Universe</p>
               <div className="d-flex">
                 <div>
-                  <p>Home</p>
-                  <p>About Us</p>
-                  <p>Search Notes</p>
-                  <p>Upload Notes</p>
+                  <p>
+                    <NavLink to="/">Home</NavLink>
+                  </p>
+                  <p>
+                    <NavLink to="#">About Us</NavLink>
+                  </p>
+                  <p>
+                    <NavLink to="/search_notes">Search Notes</NavLink>
+                  </p>
+                  <p>
+                    <NavLink to="/upload_notes">Upload Notes</NavLink>
+                  </p>
                 </div>
                 <div className="ps-4 mobileMargin">
                   <p>Career</p>
@@ -35,7 +43,9 @@ const Footer = () => {
                 </div>
                 <div className="ps-4 mobileMargin">
                   <p>Endrosments</p>
-                  <p>Contact Admin</p>
+                  <p>
+                    <NavLink to="/contact">Contact Admin</NavLink>
+                  </p>
                 </div>
               </div>
             </div>

@@ -15,13 +15,13 @@ const Body = () => {
   return (
     <>
       <Suspense fallback={<div>Please Wait...</div>}>
+        <Route path="/search_notes/:pdfId" component={ShowPdf} />
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/search_notes" component={SearchNotes} />
           <Route exact path="/upload_notes" component={UploadNotes} />
           <Route exact path="/contact" component={ContactAdmin} />
-          <Route path="/search_notes/:pdfId" component={ShowPdf} />
         </Switch>
         <Footer />
       </Suspense>

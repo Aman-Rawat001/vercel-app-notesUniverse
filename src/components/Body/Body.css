@@ -3,3 +3,8 @@
   color: #b3c3db;
   background-image: #b3c3db;
 }
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}

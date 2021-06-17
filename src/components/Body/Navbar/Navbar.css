@@ -30,6 +30,7 @@
   font-size: 1.1rem;
 }
 .navigationBar .navbar_link {
+  margin-left: 2px;
   text-decoration: none;
 }
 .navigationBar .navbar_link:hover {
@@ -66,5 +67,11 @@
   }
   .navigationBar .navbar_item {
     padding-bottom: 1rem;
+  }
+  .navigationBar .navbar_link {
+    margin-top: 1rem;
+  }
+  .navbar .navbar_menu {
+    margin-right: 0 !important;
   }
 }

@@ -32,7 +32,7 @@ const SearchCard = (props) => {
                 Uploded by: <span>{props.name}</span>
               </p>
             </div>
-            <a href={`/search_notes/${props.id}`} target="_blank">
+            <a href={`/search_notes/${props.id}`}>
               <button className="accessBtn btn btn-success">Access Note</button>
             </a>
           </div>

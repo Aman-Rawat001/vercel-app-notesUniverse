@@ -23,6 +23,10 @@
   font-size: 0.9rem;
   margin: 8px;
 }
+.footer p a {
+  text-decoration: none;
+  color: #999999;
+}
 
 @media screen and (max-width: 575px) {
   .footer .mobileMargin {
