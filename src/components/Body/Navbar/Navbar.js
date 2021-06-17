@@ -25,8 +25,28 @@ const Navbar = () => {
   const history = useHistory();
   //non optimized code.
   useEffect(() => {
-    document.getElementById("linkOne").classList.add("clickActive");
-    history.push("/");
+    const activeLink = window.location.pathname;
+    if (activeLink === "/") {
+      document.getElementById("linkOne").classList.add("clickActive");
+      document.getElementById("linkTwo").classList.remove("clickActive");
+      document.getElementById("linkThree").classList.remove("clickActive");
+      document.getElementById("linkFour").classList.remove("clickActive");
+    } else if (activeLink === "/search_notes") {
+      document.getElementById("linkTwo").classList.add("clickActive");
+      document.getElementById("linkOne").classList.remove("clickActive");
+      document.getElementById("linkThree").classList.remove("clickActive");
+      document.getElementById("linkFour").classList.remove("clickActive");
+    } else if (activeLink === "/upload_notes") {
+      document.getElementById("linkThree").classList.add("clickActive");
+      document.getElementById("linkOne").classList.remove("clickActive");
+      document.getElementById("linkTwo").classList.remove("clickActive");
+      document.getElementById("linkFour").classList.remove("clickActive");
+    } else if (activeLink === "/contact") {
+      document.getElementById("linkFour").classList.add("clickActive");
+      document.getElementById("linkOne").classList.remove("clickActive");
+      document.getElementById("linkThree").classList.remove("clickActive");
+      document.getElementById("linkTwo").classList.remove("clickActive");
+    }
   }, []);
   const handleClick = (num) => {
     if (num === "1") {

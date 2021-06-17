@@ -20,6 +20,7 @@ const Body = () => {
           <Route exact path="/search_notes" component={SearchNotes} />
           <Route exact path="/upload_notes" component={UploadNotes} />
           <Route exact path="/contact" component={ContactAdmin} />
+      
         </Switch>
         <Footer />
       </Suspense>
