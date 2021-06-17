@@ -9,6 +9,7 @@ import Navbar from "./Navbar/Navbar";
 // import HomePage from "./HomePage/Homepage.js";
 import Footer from "./Footer/Footer.js";
 const HomePage = lazy(() => import("./HomePage/Homepage.js"));
+const ShowPdf = lazy(() => import("./ShowPdf/ShowPdf.js"));
 
 const Body = () => {
   return (
@@ -20,7 +21,7 @@ const Body = () => {
           <Route exact path="/search_notes" component={SearchNotes} />
           <Route exact path="/upload_notes" component={UploadNotes} />
           <Route exact path="/contact" component={ContactAdmin} />
-      
+          <Route path="/search_notes/:pdfId" component={ShowPdf} />
         </Switch>
         <Footer />
       </Suspense>
