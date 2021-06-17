@@ -40,7 +40,7 @@ const UploadNotes = () => {
       !selectedSubject
     ) {
       alert("Please fill all the fields");
-      analytics.logEvent("Unsuccessfull_uploads")
+      analytics.logEvent("Unsuccessfull_uploads");
     } else {
       if (PDF === null) return;
       storage
@@ -53,7 +53,7 @@ const UploadNotes = () => {
           // console.log(progress);
 
           if (progress === 100) {
-            analytics.logEvent("Successfull_uploads")
+            analytics.logEvent("Successfull_uploads");
             // Getting Download Link
             storage
               .ref("images")
@@ -159,21 +159,50 @@ const UploadNotes = () => {
                     className="form-select"
                     aria-label="Default select example"
                   >
-                    <option selected>Select Subject</option>
+                    <option selected disabled>
+                      Select Subject
+                    </option>
+                    <option
+                      disabled
+                      style={{ backgroundColor: "gray", color: "white" }}
+                    >
+                      Professional Core Subjects
+                    </option>
                     <option value="1">
                       Fundamentals of computer programming
                     </option>
                     <option value="2">Data Structures</option>
-                    <option value="3">Discrete mathematics</option>
-                    <option value="3">Database management system</option>
-                    <option value="3">Theory of computation</option>
-                    <option value="3">Java programming</option>
-                    <option value="3">Artificial intelligence(AI)</option>
-                    <option value="3">Internet of things(IOT)</option>
-                    <option value="3">Cyber security</option>
-                    <option value="3">Compiler Design</option>
-                    <option value="3">
-                      Microprocessors and Micrcontrollers
+                    <option value="3">Computer Networks</option>
+                    <option value="4">Object Oriented Programming</option>
+                    <option value="5">Design and Analysis of Algorithms</option>
+                    <option value="6">
+                      Computer Architecture and Organisation
+                    </option>
+                    <option value="7">Discrete Mathematicss</option>
+                    <option value="8">Database Management Systems</option>
+                    <option value="9">Operating Systems</option>
+                    <option value="10">Software Engineering</option>
+                    <option value="11">Theory of Computation</option>
+                    <option value="12">
+                      Introduction to Communication Systems
+                    </option>
+                    <option value="13">Multi-device Programming</option>
+                    <option value="14">Advanced Java Programming</option>
+                    <option
+                      disabled
+                      style={{ backgroundColor: "gray", color: "white" }}
+                    >
+                      Professional Elective Subjects
+                    </option>
+                    <option value="15">Artificial Intelligence</option>
+                    <option value="16">
+                      Introduction to Internet-Of-Things
+                    </option>
+                    <option value="17">Machine Learning</option>
+                    <option value="18">Cyber Security</option>
+                    <option value="19">Compiler Design</option>
+                    <option value="20">
+                      Microprocessors and Microcontrollers
                     </option>
                   </select>
                 </div>
