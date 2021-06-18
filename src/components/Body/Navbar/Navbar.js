@@ -61,6 +61,7 @@ const Navbar = () => {
                 activeClassName="activeLink"
                 className="navbar_link"
                 aria-current="page"
+                exact
                 to="/"
               >
                 <li className="navbar_item" id="linkOne">

@@ -24,15 +24,28 @@ const ShowPdf = () => {
   });
   return (
     <div className="mt-5 text-center">
-      <h1 className="pt-5">{pdfId}</h1>
+      {/* <h1 className="pt-5">{pdfId}</h1> */}
       <div className="holds-the-iframe">
-        {/* <embed
-          src={`${showLink}#toolbar=0`}
-          typa="application/pdf"
+        <object
+          className="mt-4"
+          data={`${showLink}`}
+          type="application/pdf"
           width="100%"
           height="600px"
-          loading="lazy"
-        /> */}
+        ></object>
+      </div>
+      <div className="showOnSmallScreen my-5 container">
+        <div className="py-5 text-center">
+          <p>
+            <span style={{ fontWeight: "600" }}>Sorry! .</span>
+            Your mobile browser doesn't support online PDF viewer.
+            <span className="text_bold" style={{ fontWeight: "600" }}>
+              {" "}
+              Open in computer or
+            </span>{" "}
+          </p>
+          <a href={`${showLink}`}>Download Notes PDF</a>
+        </div>
       </div>
     </div>
   );
