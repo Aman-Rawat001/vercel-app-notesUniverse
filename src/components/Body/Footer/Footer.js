@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import logo from "../../../images/logo.png";
+import whiteLogo from "../../../images/whiteLogo.png";
 import { NavLink } from "react-router-dom";
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-md-6">
             <div className="leftContent d-flex">
-              <img src={logo} alt="Logo" />
+              <img src={whiteLogo} alt="Logo" />
               {/* <h3>NOTES_UNIVERSE</h3> */}
               <NavLink to="/contact">
                 <button className="btn btn-success ms-4">Connect Admin</button>
