@@ -3,7 +3,7 @@
   color: #999999;
 }
 .footer .leftContent img {
-  width: 2rem;
+  width: 17rem;
 }
 .footer .leftContent h3 {
   font-size: 1.1rem;
@@ -31,5 +31,14 @@
 @media screen and (max-width: 575px) {
   .footer .mobileMargin {
     margin-left: -1rem;
+  }
+  .footer .leftContent img {
+    width: 10rem;
+  }
+  .footer .leftContent {
+    align-items: inherit;
+  }
+  .footer .leftContent button {
+    margin-left: 0 !important;
   }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../../images/tempLogo.svg";
+import logo from "../../../images/logo.png";
 
 const Navbar = () => {
   // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
@@ -29,7 +29,7 @@ const Navbar = () => {
         id="navbar"
       >
         <div className="container-fluid">
-          <a className="navbar-brand ms-3" href="#">
+          <a className="navbar-brand" href="#">
             <div
               style={{
                 display: "flex",
@@ -38,7 +38,7 @@ const Navbar = () => {
               }}
             >
               <img className="logo" src={logo} alt="Logo" />
-              <h5 className="">NOTES_UNIVERSE</h5>
+              {/* <h5 className="">NOTES_UNIVERSE</h5> */}
             </div>
           </a>
           <button
@@ -71,6 +71,7 @@ const Navbar = () => {
               <NavLink
                 activeClassName="activeLink"
                 className="navbar_link"
+                exact
                 to="/search_notes"
               >
                 <li className="navbar_item" id="linkTwo">

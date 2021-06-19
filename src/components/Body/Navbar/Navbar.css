@@ -19,7 +19,7 @@
 }
 
 .navigationBar .logo {
-  width: 2rem;
+  width: 17rem;
 }
 .navigationBar .navbar_link {
   color: gray;
@@ -62,6 +62,10 @@
   }
 }
 @media screen and (max-width: 575px) {
+  .navigationBar .logo {
+    width: 12.5rem;
+    height: 2.5rem;
+  }
   .navigationBar .navbar_item a {
     font-size: 1rem;
   }
