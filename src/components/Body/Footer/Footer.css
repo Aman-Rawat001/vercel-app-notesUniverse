@@ -12,12 +12,13 @@
   align-items: flex-end;
 }
 .footer .leftContent button {
-  border: none;
+  border: 1px solid transparent;
   background-color: #4883db;
   color: white;
 }
 .footer .leftContent button:hover {
   background-color: #186ff0;
+  border: 1px solid white;
 }
 .footer p {
   font-size: 0.9rem;

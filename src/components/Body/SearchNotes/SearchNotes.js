@@ -84,7 +84,11 @@ const SearchNotes = () => {
               <button
                 onClick={handleSearch}
                 className="btn btn-outline-success searchBar_btn"
-                style={{ backgroundColor: "rgb(41 98 184)", color: "white" }}
+                style={{
+                  backgroundColor: "rgb(41 98 184)",
+                  color: "white",
+                  border: "1px solid transparent",
+                }}
                 type="submit"
               >
                 Search
@@ -149,7 +153,12 @@ const SearchNotes = () => {
                   <option selected disabled>
                     Subject
                   </option>
-                  <option disabled style={{ backgroundColor: "gray", color: "white" }}>Professional Core Subjects</option>
+                  <option
+                    disabled
+                    style={{ backgroundColor: "gray", color: "white" }}
+                  >
+                    Professional Core Subjects
+                  </option>
                   <option value="1">
                     Fundamentals of computer programming
                   </option>
@@ -204,13 +213,17 @@ const SearchNotes = () => {
               >
                 {/* before screen */}
                 <div id="beforeScreen">
-                  <p>Select all the fields and press search button.</p>
+                  <p className="ms-3">
+                    Select all the fields and press search button.
+                  </p>
                 </div>
 
                 {/* nothing found */}
                 <div id="nothingFound" style={{ display: "none" }}>
-                  <p>Nothing Found</p>
-                  <p>Try again by selecting different parameters.</p>
+                  <p className="ms-3">Nothing Found</p>
+                  <p className="ms-3">
+                    Try again by selecting different parameters.
+                  </p>
                 </div>
 
                 {/* data from firebase */}

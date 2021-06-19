@@ -33,11 +33,14 @@
   background-color: white;
   text-transform: uppercase;
   outline: none;
-  border: none;
+  color: rgb(87, 87, 87);
+  border: 1px solid transparent;
 }
 .homepage .heroScreen .heroScreen_btn:hover {
   /* color: black; */
   background-color: #1163df;
+  color: white;
+  border: 1px solid white;
 }
 .homepage .rightColumn {
   background-color: #4883db;
@@ -74,7 +77,7 @@
   border: 1px solid;
 }
 .homepage .section-2 button:hover {
-  background-color: #2d2dba;
+  background-color: #5555c5;
 }
 .homepage .section-1 .contentWrite p {
   color: gray;
@@ -84,6 +87,7 @@
 }
 .homepage .section-1 .contentWrite button {
   background-color: #4883db;
+  border: transparent;
 }
 .homepage .section-1 .contentWrite button:hover {
   background-color: rgb(75, 75, 235);
