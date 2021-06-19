@@ -22,7 +22,7 @@ const Footer = () => {
             <div className="rightContent">
               <p>More From Notes Universe</p>
               <div className="d-flex">
-                <div>
+                <div> 
                   <p>
                     <NavLink to="/">Home</NavLink>
                   </p>
