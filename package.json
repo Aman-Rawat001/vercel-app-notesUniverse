@@ -11,6 +11,7 @@
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.1",
     "cra-template": "1.1.1",
+    "emailjs-com": "^3.1.0",
     "firebase": "^8.6.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",

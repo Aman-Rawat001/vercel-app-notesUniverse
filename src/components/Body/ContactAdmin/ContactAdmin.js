@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./ContactAdmin.css";
 import socialMediaImg from "../../../images/socialMedia.svg";
-import firebase, {analytics} from "../../../firebase";
+import firebase, { analytics } from "../../../firebase";
+import emailjs from "emailjs-com";
+import apiKeys from "../SendEmail/apiKey.js";
 
 const ContactAdmin = () => {
   const db = firebase.firestore();
@@ -20,6 +22,7 @@ const ContactAdmin = () => {
   };
   const sendDetails = (e) => {
     e.preventDefault();
+    // sending data in database..
     if (
       !contactDetails.name ||
       !contactDetails.email ||
@@ -28,7 +31,7 @@ const ContactAdmin = () => {
     ) {
       alert("Please fill all the fields");
     } else {
-      console.log(contactDetails);
+      // console.log(contactDetails);
       db.collection("Student_Queries")
         .add({
           name: contactDetails.name,
@@ -38,7 +41,21 @@ const ContactAdmin = () => {
         })
         .then(() => {
           alert("Your Query has been successfully deliverd");
-          analytics.logEvent("Successfull_queries_sent")
+          analytics.logEvent("Successfull_queries_sent");
+          // sending email through emailjs.
+          emailjs
+            .sendForm(
+              apiKeys.SERVICE_ID,
+              apiKeys.TEMPLATE_ID,
+              e.target,
+              apiKeys.USER_ID
+            )
+            .then((result) => {
+              console.log(result.text);
+            })
+            .catch((err) => {
+              console.log(err.text);
+            });
           // console.log("submitted");
           setContactDetails({
             name: "",
@@ -70,7 +87,7 @@ const ContactAdmin = () => {
               <div className="container">
                 <div className="row">
                   <div className="col-md-8 mx-auto ">
-                    <form>
+                    <form onSubmit={sendDetails}>
                       <div className="mb-3">
                         <input
                           onChange={handleInputChange}
@@ -115,7 +132,6 @@ const ContactAdmin = () => {
                       </div>
 
                       <button
-                        onClick={sendDetails}
                         // type="submit"
                         className="btn btn-primary sendmsg"
                       >
