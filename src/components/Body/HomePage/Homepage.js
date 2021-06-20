@@ -8,6 +8,7 @@ import learning from "../../../images/learning.svg";
 import quickLearning from "../../../images/quickLearning.svg";
 import worldWide from "../../../images/worldWide.svg";
 import { NavLink } from "react-router-dom";
+import Carousel from "../HomepageCarousel/Carousel";
 
 const Homepage = () => {
   return (
@@ -85,6 +86,7 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
       <section>
         <div className="container-fluid section-2">
           <div className="row">
@@ -113,6 +115,7 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
       <section className="section-3">
         <div className="container py-5">
           <div className="row">
@@ -159,6 +162,10 @@ const Homepage = () => {
             </div>
           </div>
         </div>
+      </section>
+      {/* carousel section */}
+      <section>
+        <Carousel />
       </section>
     </div>
   );
