@@ -249,31 +249,26 @@ const SearchNotes = () => {
               {/* RHS Stuff */}
               <div className="col-md-2 col-sm-12 col-12 leftCorner">
                 <div className="card ">
-                  <div className="card-header rhs_card_header">
-                    Top Institutes
-                  </div>
+                  <div className="card-header rhs_card_header">Highlights</div>
                   <div className="card-body">
                     <blockquote className="mb-0">
                       <p>
-                        A well-known quote, contained in a blockquote element.
+                        Right now we have only notes for B.tech c.s.e students.
                       </p>
                       <footer className="blockquote-footer">
-                        Someone famous in{" "}
-                        <cite title="Source Title">Source Title</cite>
+                        Expanding phase <cite title="Source Title">Admin</cite>
                       </footer>
                     </blockquote>
                   </div>
                 </div>
                 <div className="card my-2">
-                  <div className="card-header rhs_card_header">Top Area</div>
+                  <div className="card-header rhs_card_header">Suggestion</div>
                   <div className="card-body">
                     <blockquote className=" mb-0">
-                      <p>
-                        A well-known quote, contained in a blockquote element.
-                      </p>
+                      <p>We will be glad if you have any suggestion for us.</p>
                       <footer className="blockquote-footer">
-                        Someone famous in{" "}
-                        <cite title="Source Title">Source Title</cite>
+                        Goto contactAdmin{" "}
+                        <cite title="Source Title">Admin</cite>
                       </footer>
                     </blockquote>
                   </div>
