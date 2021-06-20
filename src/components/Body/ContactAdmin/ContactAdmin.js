@@ -3,7 +3,7 @@ import "./ContactAdmin.css";
 import socialMediaImg from "../../../images/socialMedia.svg";
 import firebase, { analytics } from "../../../firebase";
 import emailjs from "emailjs-com";
-import apiKeys from "../SendEmail/apiKey";
+import apiKeys from "../SendEmail/apiKey.js";
 
 const ContactAdmin = () => {
   const db = firebase.firestore();
