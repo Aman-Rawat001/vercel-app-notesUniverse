@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./UploadNotes.css";
 import backgroundWall from "../../../images/backgroundWall.png";
 import firebase, { storage, analytics } from "../../../firebase";
+import emailjs from "emailjs-com";
+import apiKeys from "../SendEmail/apiKey.js";
 
 const UploadNotes = () => {
   const db = firebase.firestore();
@@ -77,6 +79,20 @@ const UploadNotes = () => {
                   })
                   .then(() => {
                     alert("File has been successfully uploaded");
+                    // sending email through emailjs.
+                    emailjs
+                      .sendForm(
+                        apiKeys.SERVICE_ID,
+                        apiKeys.TEMPLATE_ID_UPLOAD,
+                        e.target,
+                        apiKeys.USER_ID
+                      )
+                      .then((result) => {
+                        console.log(result.text);
+                      })
+                      .catch((err) => {
+                        console.log(err.text);
+                      });
                     setUploadDetails({
                       name: "",
                       email: "",
@@ -107,7 +123,7 @@ const UploadNotes = () => {
               credit.
             </p>
           </div>
-          <form>
+          <form onSubmit={UploadPDF}>
             <div className="form-group row">
               <label className="col-sm-2 col-form-label">Your Name</label>
               <div className="col-sm-10">
@@ -246,10 +262,7 @@ const UploadNotes = () => {
               className="w-80 mx-auto"
               style={{ color: "white", opacity: "1" }}
             />
-            <button
-              onClick={UploadPDF}
-              className="btn btn-outline-success upload_notes_btn mt-3"
-            >
+            <button className="btn btn-outline-success upload_notes_btn mt-3">
               Upload Notes
             </button>
             <progress

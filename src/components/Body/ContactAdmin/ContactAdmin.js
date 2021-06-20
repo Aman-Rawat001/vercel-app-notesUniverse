@@ -46,7 +46,7 @@ const ContactAdmin = () => {
           emailjs
             .sendForm(
               apiKeys.SERVICE_ID,
-              apiKeys.TEMPLATE_ID,
+              apiKeys.TEMPLATE_ID_CONTACT,
               e.target,
               apiKeys.USER_ID
             )
