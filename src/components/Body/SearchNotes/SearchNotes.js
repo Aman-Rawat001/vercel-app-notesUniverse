@@ -41,7 +41,7 @@ const SearchNotes = () => {
       };
       usersArray.push(tempUsers);
     });
-    console.log(usersArray);
+    // console.log(usersArray);
     if (usersArray.length === 0) {
       document.getElementById("nothingFound").style.display = "block";
       analytics.logEvent("Unsuccessfull_searches");

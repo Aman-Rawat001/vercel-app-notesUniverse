@@ -62,7 +62,7 @@ const UploadNotes = () => {
               .child(PDF.name)
               .getDownloadURL()
               .then((url) => {
-                console.log("file url: " + url);
+                // console.log("file url: " + url);
                 // getting file name.
                 var httpsReference = storage.refFromURL(url);
                 // console.log("file name: " + httpsReference.name);
