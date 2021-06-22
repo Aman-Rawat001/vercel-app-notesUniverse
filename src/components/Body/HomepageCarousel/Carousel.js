@@ -1,5 +1,7 @@
 import React from "react";
 import img1 from "../../../images/testimonialImg1.png";
+import img2 from "../../../images/testimonialImg2.png";
+import img3 from "../../../images/testimonialImg3.png";
 import "./Carousel.css";
 
 const Carousel = () => {
@@ -7,9 +9,7 @@ const Carousel = () => {
     <>
       <div className="homepage_carousel">
         <div className="text-center py-4">
-          <h3 style={{ fontWeight: "700" }}>
-            WHAT STUDENTS ARE SAYING ABOUT US
-          </h3>
+          <h3>WHAT STUDENTS ARE SAYING ABOUT US</h3>
         </div>
         <div
           id="carouselExampleCaptions"
@@ -44,31 +44,30 @@ const Carousel = () => {
               <div class="container testimonialText">
                 <h5>Kareena</h5>
                 <p>
-                  Docmerit is a great platform to get and share study resources,
+                  It is a great platform to get and share study resources,
                   especially the resource contributed by past students and who
                   have done similar courses
                 </p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src={img1} class="d-block testimonialImg" alt="..." />
+              <img src={img2} class="d-block testimonialImg" alt="..." />
               <div class="container testimonialText">
-                <h5>Kareena</h5>
+                <h5>Akash</h5>
                 <p>
-                  Docmerit is a great platform to get and share study resources,
-                  especially the resource contributed by past students and who
-                  have done similar courses
+                  One of the most useful resource available is 24/7 access to
+                  study guides and notes. It helped me a lot to clear my final
+                  semester exams
                 </p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src={img1} class="d-block testimonialImg" alt="..." />
+              <img src={img3} class="d-block testimonialImg" alt="..." />
               <div class="container testimonialText">
-                <h5>Kareena</h5>
+                <h5>Adesh</h5>
                 <p>
-                  Docmerit is a great platform to get and share study resources,
-                  especially the resource contributed by past students and who
-                  have done similar courses
+                  Notes_Universe is super useful, because you get best notes for free, You even benefit from summaries made a couple
+                  of years ago
                 </p>
               </div>
             </div>
