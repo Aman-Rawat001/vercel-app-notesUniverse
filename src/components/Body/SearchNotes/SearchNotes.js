@@ -11,12 +11,18 @@ import firebase, { analytics } from "../../../firebase";
 const SearchNotes = () => {
   const db = firebase.firestore();
   const [fetchedSem, setFetchedSem] = useState("");
+  const [fetchedSub, setFetchedSub] = useState("");
   const [fetchNotes, setFetchNotes] = useState([]);
 
   const handleNotesSearch = () => {
     const e = document.getElementById("selectSem");
     var selectedSem = e.options[e.selectedIndex].text;
     setFetchedSem(selectedSem);
+  };
+  const handleFetchedSub = () => {
+    const e = document.getElementById("selectSub");
+    var selectedSub = e.options[e.selectedIndex].text;
+    setFetchedSub(selectedSub);
   };
 
   const usersArray = [];
@@ -27,7 +33,14 @@ const SearchNotes = () => {
 
     // getting data from firebase database.
     const response = db.collection("Notes_Data");
-    const filter = await response.where("semester", "==", fetchedSem);
+    // upgrading search engine.
+    var filter;
+    if(fetchedSub === ""){
+      filter = await response.where("semester", "==", fetchedSem);
+  }
+    if(fetchedSub!== ""){
+      filter = await response.where("semester", "==", fetchedSem).where("subject", "==", fetchedSub);
+    }
     const data = await filter.get();
     data.docs.forEach((item) => {
       var tempUsers = {
@@ -145,8 +158,9 @@ const SearchNotes = () => {
               </div>
               <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
                 <select
+                onChange={handleFetchedSub}
                   name="subject"
-                  id="select_sub"
+                  id="selectSub"
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
