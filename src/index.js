@@ -6,7 +6,10 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import App from "./App";
 import { analytics } from "./firebase";
 
+require("dotenv").config();
+
 analytics.logEvent("Total Users");
+// console.log(process.env);
 
 ReactDOM.render(
   <BrowserRouter>

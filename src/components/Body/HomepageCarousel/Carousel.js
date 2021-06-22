@@ -66,8 +66,9 @@ const Carousel = () => {
               <div class="container testimonialText">
                 <h5>Adesh</h5>
                 <p>
-                  Notes_Universe is super useful, because you get best notes for free, You even benefit from summaries made a couple
-                  of years ago
+                  Notes_Universe is super useful, because you get best notes for
+                  free, You even benefit from summaries made a couple of years
+                  ago
                 </p>
               </div>
             </div>
