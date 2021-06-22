@@ -9,8 +9,8 @@ const UploadNotes = () => {
   const db = firebase.firestore();
   const [progressBar, setProgressBar] = useState("0");
   const [PDF, setPDF] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("null");
-  const [selectedSemester, setSelectedSemester] = useState("null");
+  const [selectedSubject, setSelectedSubject] = useState("");
+  const [selectedSemester, setSelectedSemester] = useState("");
 
   const [uploadDetail, setUploadDetails] = useState({
     name: "",
@@ -23,13 +23,17 @@ const UploadNotes = () => {
     name = event.target.name;
     value = event.target.value;
     setUploadDetails({ ...uploadDetail, [name]: value });
+  };
+  const handleSubject = () => {
     const e = document.getElementById("select_sub");
     var selectedSub = e.options[e.selectedIndex].text;
     setSelectedSubject(selectedSub);
+  }
+  const handleSemester = () => {
     const val = document.getElementById("select_sem");
     var selectedSem = val.options[val.selectedIndex].text;
     setSelectedSemester(selectedSem);
-  };
+  }
 
   const UploadPDF = (e) => {
     e.preventDefault();
@@ -169,7 +173,8 @@ const UploadNotes = () => {
                 <div className="dropdown_menu my-2 ">
                   <label>Select SUB</label>
                   <select
-                    onClick={handleUpload}
+                  required
+                    onClick={handleSubject}
                     name="subject"
                     id="select_sub"
                     className="form-select"
@@ -226,7 +231,8 @@ const UploadNotes = () => {
                 <div className="dropdown_menu my-2 mt-3 ">
                   <label>Select SEM</label>
                   <select
-                    onClick={handleUpload}
+                  required
+                    onClick={handleSemester}
                     name="semester"
                     id="select_sem"
                     className="form-select"
