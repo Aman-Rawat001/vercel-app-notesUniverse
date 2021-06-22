@@ -6,4 +6,4 @@
 # Node artifact files
 node_modules/
 dist/
-# apiKey.js
+.env
