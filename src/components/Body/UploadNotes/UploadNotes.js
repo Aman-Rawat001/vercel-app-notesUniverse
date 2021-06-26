@@ -238,7 +238,7 @@ const UploadNotes = () => {
                     className="form-select"
                     aria-label="Default select example"
                   >
-                    <option selected>Select Semester</option>
+                    <option selected disabled>Select Semester</option>
                     <option value="1">Semester-1</option>
                     <option value="2">Semester-2</option>
                     <option value="3">Semester-3</option>
