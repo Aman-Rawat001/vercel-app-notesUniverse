@@ -141,9 +141,10 @@ const UploadNotes = () => {
           <div className="content1">
             <h3>Upload Notes</h3>
             <p>
-              Please fill all the information so that we will give you your
-              credit. (File should be less than 7MB).
+              Please fill all the information carefully so that we can give you your
+              credit.
             </p>
+            <p style={{color: "green"}}>File should be less than 7MB</p>
           </div>
           <form onSubmit={UploadPDF}>
             <div className="form-group row">

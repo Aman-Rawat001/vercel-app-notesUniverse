@@ -65,7 +65,6 @@ const SearchNotes = () => {
     }
   };
 
-  // record search page views in analytics.
 
   return (
     <>
@@ -168,7 +167,7 @@ const SearchNotes = () => {
                     Subject
                   </option>
                   <option
-                    
+                    disabled
                     style={{ backgroundColor: "gray", color: "white" }}
                   >
                     Professional Core Subjects
