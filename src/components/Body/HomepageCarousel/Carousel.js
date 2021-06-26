@@ -13,15 +13,15 @@ const Carousel = () => {
         </div>
         <div
           id="carouselExampleCaptions"
-          class="carousel slide"
+          className="carousel slide"
           data-bs-ride="carousel"
         >
-          <div class="carousel-indicators">
+          <div className="carousel-indicators">
             <button
               type="button"
               data-bs-target="#carouselExampleCaptions"
               data-bs-slide-to="0"
-              class="active"
+              className="active"
               aria-current="true"
               aria-label="Slide 1"
             ></button>
@@ -38,10 +38,10 @@ const Carousel = () => {
               aria-label="Slide 3"
             ></button>
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src={img1} class="d-block testimonialImg" alt="..." />
-              <div class="container testimonialText">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img src={img1} className="d-block testimonialImg" alt="..." />
+              <div className="container testimonialText">
                 <h5>Kareena</h5>
                 <p>
                   It is a great platform to get and share study resources,
@@ -50,9 +50,9 @@ const Carousel = () => {
                 </p>
               </div>
             </div>
-            <div class="carousel-item">
-              <img src={img2} class="d-block testimonialImg" alt="..." />
-              <div class="container testimonialText">
+            <div className="carousel-item">
+              <img src={img2} className="d-block testimonialImg" alt="..." />
+              <div className="container testimonialText">
                 <h5>Akash</h5>
                 <p>
                   One of the most useful resource available is 24/7 access to
@@ -61,9 +61,9 @@ const Carousel = () => {
                 </p>
               </div>
             </div>
-            <div class="carousel-item">
-              <img src={img3} class="d-block testimonialImg" alt="..." />
-              <div class="container testimonialText">
+            <div className="carousel-item">
+              <img src={img3} className="d-block testimonialImg" alt="..." />
+              <div className="container testimonialText">
                 <h5>Adesh</h5>
                 <p>
                   Notes_Universe is super useful, because you get best notes for
@@ -74,22 +74,22 @@ const Carousel = () => {
             </div>
           </div>
           <button
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleCaptions"
             data-bs-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
           </button>
           <button
-            class="carousel-control-next"
+            className="carousel-control-next"
             type="button"
             data-bs-target="#carouselExampleCaptions"
             data-bs-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
           </button>
         </div>
       </div>

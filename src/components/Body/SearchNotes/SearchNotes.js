@@ -116,7 +116,7 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option selected disabled>
+                  <option value="">
                     Institution
                   </option>
                   <option value="1">Graphic era university</option>
@@ -129,7 +129,7 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option selected disabled>
+                  <option value="">
                     Course
                   </option>
                   <option value="1">B.tech c.s.e</option>
@@ -143,7 +143,7 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option selected disabled>
+                  <option value="">
                     Semester
                   </option>
                   <option value="1">Semester-1</option>
@@ -164,11 +164,11 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option selected disabled>
+                  <option  value="">
                     Subject
                   </option>
                   <option
-                    disabled
+                    
                     style={{ backgroundColor: "gray", color: "white" }}
                   >
                     Professional Core Subjects

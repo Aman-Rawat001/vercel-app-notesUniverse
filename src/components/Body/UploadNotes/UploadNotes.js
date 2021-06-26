@@ -11,6 +11,7 @@ const UploadNotes = () => {
   const [PDF, setPDF] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
   const [selectedSemester, setSelectedSemester] = useState("");
+  
 
   const [uploadDetail, setUploadDetails] = useState({
     name: "",
@@ -57,10 +58,18 @@ const UploadNotes = () => {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setProgressBar(progress);
           // console.log(progress);
-
           if (progress === 100) {
             analytics.logEvent("Successfull_uploads");
-            // Getting Download Link
+            setTimeout(() => {
+            sendDataInDB()
+            }, 2000);
+        }
+          }
+        );
+    }
+    const sendDataInDB = () => {
+      // Getting Download Link
+            console.log("run")
             storage
               .ref("images")
               .child(PDF.name)
@@ -110,8 +119,6 @@ const UploadNotes = () => {
                     alert(err);
                   });
               });
-          }
-        });
     }
   };
 
@@ -180,7 +187,7 @@ const UploadNotes = () => {
                     className="form-select"
                     aria-label="Default select example"
                   >
-                    <option selected disabled>
+                    <option >
                       Select Subject
                     </option>
                     <option
@@ -238,7 +245,7 @@ const UploadNotes = () => {
                     className="form-select"
                     aria-label="Default select example"
                   >
-                    <option selected disabled>Select Semester</option>
+                    <option >Select Semester</option>
                     <option value="1">Semester-1</option>
                     <option value="2">Semester-2</option>
                     <option value="3">Semester-3</option>
@@ -252,7 +259,7 @@ const UploadNotes = () => {
               </div>
             </div>
             <div className="form-group mt-2">
-              <label className="me-2" for="exampleFormControlFile1">
+              <label className="me-2" htmlFor="exampleFormControlFile1">
                 Upload Notes/pdf
               </label>
               <input
