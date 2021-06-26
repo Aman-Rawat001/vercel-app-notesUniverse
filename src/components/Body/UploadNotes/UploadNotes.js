@@ -50,6 +50,14 @@ const UploadNotes = () => {
       analytics.logEvent("Unsuccessfull_uploads");
     } else {
       if (PDF === null) return;
+    // checking size validation.
+    const oFile = document.getElementById("exampleFormControlFile1").files[0];
+    if(oFile.size >  7340032){
+      // console.log("more than 7mb")
+      document.getElementById("fileMoreThan7MB").style.display = "block"
+    }else{
+      document.getElementById("fileMoreThan7MB").style.display = "none"
+    // store file in storage.
       storage
         .ref(`/images/${PDF.name}`)
         .put(PDF)
@@ -67,9 +75,10 @@ const UploadNotes = () => {
           }
         );
     }
+    }
     const sendDataInDB = () => {
       // Getting Download Link
-            console.log("run")
+            // console.log("run")
             storage
               .ref("images")
               .child(PDF.name)
@@ -131,7 +140,7 @@ const UploadNotes = () => {
             <h3>Upload Notes</h3>
             <p>
               Please fill all the information so that we will give you your
-              credit.
+              credit. (File should be less than 7MB).
             </p>
           </div>
           <form onSubmit={UploadPDF}>
@@ -259,7 +268,7 @@ const UploadNotes = () => {
               </div>
             </div>
             <div className="form-group mt-2">
-              <label className="me-2" htmlFor="exampleFormControlFile1">
+              <label className="me-2">
                 Upload Notes/pdf
               </label>
               <input
@@ -279,6 +288,12 @@ const UploadNotes = () => {
             <button className="btn btn-outline-success upload_notes_btn mt-3">
               Upload Notes
             </button>
+            {/* morethan 7mb file div popup */}
+            <div style={{display: "none"}} className="text-center" id="fileMoreThan7MB">
+            <p style={{color: "red"}} >Oops! Your file is more than 7MB.</p>
+            <p><a href="https://pdfcompressor.com/" target="_blank" rel="norefferer">Compress File Now</a></p>
+            </div>
+            {/* progressbar */}
             <progress
               className="uploadProgress"
               value={progressBar}
