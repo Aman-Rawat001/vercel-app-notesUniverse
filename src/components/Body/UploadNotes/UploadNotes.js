@@ -57,6 +57,7 @@ const UploadNotes = () => {
       document.getElementById("fileMoreThan7MB").style.display = "block"
     }else{
       document.getElementById("fileMoreThan7MB").style.display = "none"
+      document.getElementById("uploadingBar").style.display = "block"
     // store file in storage.
       storage
         .ref(`/images/${PDF.name}`)
@@ -101,6 +102,7 @@ const UploadNotes = () => {
                   })
                   .then(() => {
                     alert("File has been successfully uploaded");
+                    document.getElementById("uploadingBar").style.display = "none"
                     // sending email through emailjs.
                     emailjs
                       .sendForm(
@@ -293,6 +295,11 @@ const UploadNotes = () => {
             <p style={{color: "red"}} >Oops! Your file is more than 7MB.</p>
             <p><a href="https://pdfcompressor.com/" target="_blank" rel="norefferer">Compress File Now</a></p>
             </div>
+            {/* uploading percentage */}
+            <div style={{display: "none"}} className="text-center" id="uploadingBar">
+            Uploading: {parseInt(progressBar)}%
+            </div>
+
             {/* progressbar */}
             <progress
               className="uploadProgress"
