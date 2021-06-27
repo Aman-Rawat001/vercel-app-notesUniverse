@@ -59,6 +59,7 @@ const SearchNotes = () => {
     // console.log(usersArray);
     if (usersArray.length === 0) {
       document.getElementById("nothingFound").style.display = "block";
+      setFetchNotes([]);
       analytics.logEvent("Unsuccessfull_searches");
     } else {
       document.getElementById("nothingFound").style.display = "none";
@@ -139,7 +140,9 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option value="">Semester</option>
+                  <option value="" disabled selected>
+                    Semester
+                  </option>
                   <option value="1">Semester-1</option>
                   <option value="2">Semester-2</option>
                   <option value="3">Semester-3</option>
@@ -158,7 +161,9 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option value="">Subject</option>
+                  <option value="" disabled selected>
+                    Subject
+                  </option>
                   <option
                     disabled
                     style={{ backgroundColor: "gray", color: "white" }}
