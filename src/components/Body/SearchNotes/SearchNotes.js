@@ -140,7 +140,7 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option value="" disabled selected>
+                  <option value="defaultSem" disabled selected>
                     Semester
                   </option>
                   <option value="1">Semester-1</option>
@@ -189,22 +189,21 @@ const SearchNotes = () => {
                     Introduction to Communication Systems
                   </option>
                   <option value="13">Multi-device Programming</option>
-                  <option value="14">Advanced Java Programming</option>
-                  <option value="15">
-                    Computer based numerical and statistical technique
-                  </option>
+                  <option value="14">Java Programming</option>
+                  <option value="15">Advanced Java Programming</option>
+                  <option value="16">CBNST</option>
                   <option
                     disabled
                     style={{ backgroundColor: "gray", color: "white" }}
                   >
                     Professional Elective Subjects
                   </option>
-                  <option value="16">Artificial Intelligence</option>
-                  <option value="17">Introduction to Internet-Of-Things</option>
-                  <option value="18">Machine Learning</option>
-                  <option value="19">Cyber Security</option>
-                  <option value="20">Compiler Design</option>
-                  <option value="21">
+                  <option value="17">Artificial Intelligence</option>
+                  <option value="18">Introduction to Internet-Of-Things</option>
+                  <option value="19">Machine Learning</option>
+                  <option value="20">Cyber Security</option>
+                  <option value="21">Compiler Design</option>
+                  <option value="22">
                     Microprocessors and Microcontrollers
                   </option>
                 </select>

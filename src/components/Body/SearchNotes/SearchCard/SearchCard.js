@@ -1,6 +1,7 @@
 import React from "react";
 import "./SearchCard.css";
 import img from "../../../../images/notesImage.png";
+import { NavLink } from "react-router-dom";
 const SearchCard = (props) => {
   return (
     <>
@@ -32,9 +33,9 @@ const SearchCard = (props) => {
                 Uploded by: <span>{props.name}</span>
               </p>
             </div>
-            <a href={`/search_notes/${props.id}`}>
+            <NavLink to={`/search_notes/${props.id}`}>
               <button className="accessBtn btn btn-success">Access Note</button>
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
