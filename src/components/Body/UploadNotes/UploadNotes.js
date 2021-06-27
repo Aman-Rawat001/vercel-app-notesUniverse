@@ -37,7 +37,6 @@ const UploadNotes = () => {
 
   const UploadPDF = (e) => {
     e.preventDefault();
-    // console.log("clicked");
     if (
       !uploadDetail.name ||
       !uploadDetail.email ||
@@ -77,7 +76,7 @@ const UploadNotes = () => {
     }
     const sendDataInDB = () => {
       // Getting Download Link
-      // console.log("run")
+
       storage
         .ref("images")
         .child(PDF.name)
@@ -191,7 +190,7 @@ const UploadNotes = () => {
                   <label>Select SUB</label>
                   <select
                     required
-                    onClick={handleSubject}
+                    onChange={handleSubject}
                     name="subject"
                     id="select_sub"
                     className="form-select"
@@ -248,7 +247,7 @@ const UploadNotes = () => {
                   <label>Select SEM</label>
                   <select
                     required
-                    onClick={handleSemester}
+                    onChange={handleSemester}
                     name="semester"
                     id="select_sem"
                     className="form-select"
