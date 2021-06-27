@@ -35,11 +35,13 @@ const SearchNotes = () => {
     const response = db.collection("Notes_Data");
     // upgrading search engine.
     var filter;
-    if(fetchedSub === ""){
+    if (fetchedSub === "") {
       filter = await response.where("semester", "==", fetchedSem);
-  }
-    if(fetchedSub!== ""){
-      filter = await response.where("semester", "==", fetchedSem).where("subject", "==", fetchedSub);
+    }
+    if (fetchedSub !== "") {
+      filter = await response
+        .where("semester", "==", fetchedSem)
+        .where("subject", "==", fetchedSub);
     }
     const data = await filter.get();
     data.docs.forEach((item) => {
@@ -64,7 +66,6 @@ const SearchNotes = () => {
       analytics.logEvent("Successfull_searches");
     }
   };
-
 
   return (
     <>
@@ -115,9 +116,7 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option value="">
-                    Institution
-                  </option>
+                  <option value="">Institution</option>
                   <option value="1">Graphic era university</option>
                 </select>
               </div>
@@ -128,9 +127,7 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option value="">
-                    Course
-                  </option>
+                  <option value="">Course</option>
                   <option value="1">B.tech c.s.e</option>
                 </select>
               </div>
@@ -142,9 +139,7 @@ const SearchNotes = () => {
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option value="">
-                    Semester
-                  </option>
+                  <option value="">Semester</option>
                   <option value="1">Semester-1</option>
                   <option value="2">Semester-2</option>
                   <option value="3">Semester-3</option>
@@ -157,15 +152,13 @@ const SearchNotes = () => {
               </div>
               <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
                 <select
-                onChange={handleFetchedSub}
+                  onChange={handleFetchedSub}
                   name="subject"
                   id="selectSub"
                   className="form-select select_dropdown"
                   aria-label="Default select example"
                 >
-                  <option  value="">
-                    Subject
-                  </option>
+                  <option value="">Subject</option>
                   <option
                     disabled
                     style={{ backgroundColor: "gray", color: "white" }}
@@ -182,7 +175,7 @@ const SearchNotes = () => {
                   <option value="6">
                     Computer Architecture and Organisation
                   </option>
-                  <option value="7">Discrete Mathematicss</option>
+                  <option value="7">Discrete Mathematics</option>
                   <option value="8">Database Management Systems</option>
                   <option value="9">Operating Systems</option>
                   <option value="10">Software Engineering</option>
@@ -192,7 +185,9 @@ const SearchNotes = () => {
                   </option>
                   <option value="13">Multi-device Programming</option>
                   <option value="14">Advanced Java Programming</option>
-                  <option value="15">Computer based numerical and statistical technique</option>
+                  <option value="15">
+                    Computer based numerical and statistical technique
+                  </option>
                   <option
                     disabled
                     style={{ backgroundColor: "gray", color: "white" }}
