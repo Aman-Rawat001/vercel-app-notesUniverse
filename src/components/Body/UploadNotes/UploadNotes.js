@@ -114,17 +114,20 @@ const UploadNotes = () => {
                 .catch((err) => {
                   console.log(err.text);
                 });
+              // clear inputs
               setUploadDetails({
                 name: "",
                 email: "",
                 chapter: "",
               });
               setProgressBar("0");
-              setPDF("");
+              document.getElementById("select_sem").selectedIndex = "0";
+              document.getElementById("select_sub").selectedIndex = "0";
+              let input = document.querySelector('input[type="file"]');
+              input.outerHTML = input.outerHTML;
             })
             .catch((err) => {
-              console.log("error occured: ");
-              alert(err);
+              console.log(err);
             });
         });
     };
@@ -267,8 +270,9 @@ const UploadNotes = () => {
               </div>
             </div>
             <div className="form-group mt-2">
-              <label className="me-2">Upload Notes/pdf</label>
+              <label className="me-2">Upload Note/file</label>
               <input
+                id="uploadFileInput"
                 type="file"
                 accept="application/pdf, .doc,.docx"
                 onChange={(e) => {
