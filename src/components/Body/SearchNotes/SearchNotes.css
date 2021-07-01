@@ -2,8 +2,6 @@
   margin-top: 4rem;
   padding-top: 2rem;
 }
-.notes_searchBar .search_dropdown {
-}
 .notes_searchBar .dropdown_menu {
   display: flex;
   justify-content: space-around;
@@ -12,6 +10,9 @@
 .notes_searchBar .select_dropdown {
   box-shadow: 0px 2px 6px 0px #cbcbcb;
   font-weight: 500;
+}
+.notes_searchBar .searchItems {
+  text-align: center;
 }
 .notes_searchBar form .faSearchIcon {
   display: flex;

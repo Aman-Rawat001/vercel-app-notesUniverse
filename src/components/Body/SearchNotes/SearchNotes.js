@@ -3,6 +3,7 @@ import "./SearchNotes.css";
 // import SearchCard from "./SearchCard/SearchCard.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import ChaperListJSON from "./ChapterList.json";
 
 const SearchCard = lazy(() => import("./SearchCard/SearchCard.js"));
 
@@ -12,6 +13,7 @@ const SearchNotes = () => {
   const db = firebase.firestore();
   const [fetchedSem, setFetchedSem] = useState("");
   const [fetchedSub, setFetchedSub] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [fetchNotes, setFetchNotes] = useState([]);
 
   const handleNotesSearch = () => {
@@ -38,6 +40,7 @@ const SearchNotes = () => {
     if (fetchedSub === "") {
       filter = await response.where("semester", "==", fetchedSem);
     }
+
     if (fetchedSub !== "") {
       filter = await response
         .where("semester", "==", fetchedSem)
@@ -68,6 +71,12 @@ const SearchNotes = () => {
     }
   };
 
+  const handleSearchItem = (e) => {
+    setSearchTerm(e.target.value);
+    setFetchedSub(e.target.value);
+    document.getElementById("searchEngineBox").style.display = "none";
+  };
+
   return (
     <>
       <div
@@ -91,8 +100,13 @@ const SearchNotes = () => {
                 }}
                 className="form-control me-2"
                 type="search"
-                value={""}
-                placeholder="Select fields below..."
+                onChange={(event) => {
+                  setSearchTerm(event.target.value);
+                  document.getElementById("searchEngineBox").style.display =
+                    "block";
+                }}
+                value={searchTerm}
+                placeholder="Search by subject name..."
                 aria-label="Search"
               />
               <button
@@ -108,6 +122,36 @@ const SearchNotes = () => {
                 Search
               </button>
             </form>
+            {/* search engine code */}
+            <div id="searchEngineBox">
+              {ChaperListJSON.filter((item) => {
+                if (searchTerm === "") {
+                  return null;
+                } else if (
+                  item.chapterName
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return item;
+                }
+              }).map((item, index) => {
+                if (index < 5) {
+                  return (
+                    <div
+                      className="searchItems"
+                      key={index}
+                      id={`searchItem${index}`}
+                    >
+                      <input
+                        type="text"
+                        value={item.chapterName}
+                        onClick={handleSearchItem}
+                      />
+                    </div>
+                  );
+                }
+              })}
+            </div>
             {/* dropdowns */}
             <div className="dropdown_menu row">
               <div className="dropdown col-md-3 col-sm-6 col-6 search_dropdown">
