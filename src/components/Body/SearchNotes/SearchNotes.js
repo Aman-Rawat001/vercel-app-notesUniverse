@@ -41,7 +41,7 @@ const SearchNotes = () => {
       filter = await response.where("semester", "==", fetchedSem);
     }
 
-    if (fetchedSub !== "") {
+    if (fetchedSub !== "" && fetchedSem !== "") {
       filter = await response
         .where("semester", "==", fetchedSem)
         .where("subject", "==", fetchedSub);
