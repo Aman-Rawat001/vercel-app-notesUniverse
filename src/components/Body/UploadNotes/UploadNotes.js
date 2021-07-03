@@ -228,22 +228,20 @@ const UploadNotes = () => {
                     <option value="14">Java Programming</option>
                     <option value="15">Advanced Java Programming</option>
                     <option value="16">CBNST</option>
+                    <option value="17">Microprocessor</option>
                     <option
                       disabled
                       style={{ backgroundColor: "gray", color: "white" }}
                     >
                       Professional Elective Subjects
                     </option>
-                    <option value="17">Artificial Intelligence</option>
-                    <option value="18">
+                    <option value="18">Artificial Intelligence</option>
+                    <option value="19">
                       Introduction to Internet-Of-Things
                     </option>
-                    <option value="19">Machine Learning</option>
-                    <option value="20">Cyber Security</option>
-                    <option value="21">Compiler Design</option>
-                    <option value="22">
-                      Microprocessors and Microcontrollers
-                    </option>
+                    <option value="20">Machine Learning</option>
+                    <option value="21">Cyber Security</option>
+                    <option value="22">Compiler Design</option>
                   </select>
                 </div>
                 <div className="dropdown_menu my-2 mt-3 ">
