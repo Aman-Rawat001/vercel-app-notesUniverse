@@ -9,7 +9,7 @@ import Navbar from "./Navbar/Navbar";
 // import HomePage from "./HomePage/Homepage.js";
 import Footer from "./Footer/Footer.js";
 const HomePage = lazy(() => import("./HomePage/Homepage.js"));
-const ShowPdf = lazy(() => import("./ShowPdf/ShowPdf.jsx"));
+const ShowPdf = lazy(() => import("./ShowPdf/ShowPdf.js"));
 
 const Body = () => {
   return (
