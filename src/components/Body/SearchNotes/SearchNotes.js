@@ -40,7 +40,9 @@ const SearchNotes = () => {
     if (fetchedSub === "") {
       filter = await response.where("semester", "==", fetchedSem);
     }
-
+    if (fetchedSem == "") {
+      filter = await response.where("subject", "==", fetchedSub);
+    }
     if (fetchedSub !== "" && fetchedSem !== "") {
       filter = await response
         .where("semester", "==", fetchedSem)
@@ -106,7 +108,7 @@ const SearchNotes = () => {
                     "block";
                 }}
                 value={searchTerm}
-                placeholder="Search by subject name..."
+                placeholder="Search subject name..."
                 aria-label="Search"
               />
               <button
@@ -124,33 +126,35 @@ const SearchNotes = () => {
             </form>
             {/* search engine code */}
             <div id="searchEngineBox">
-              {ChaperListJSON.filter((item) => {
-                if (searchTerm === "") {
-                  return null;
-                } else if (
-                  item.chapterName
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase())
-                ) {
-                  return item;
-                }
-              }).map((item, index) => {
-                if (index < 5) {
-                  return (
-                    <div
-                      className="searchItems"
-                      key={index}
-                      id={`searchItem${index}`}
-                    >
-                      <input
-                        type="text"
-                        value={item.chapterName}
-                        onClick={handleSearchItem}
-                      />
-                    </div>
-                  );
-                }
-              })}
+              <div className="innerSearchDiv">
+                {ChaperListJSON.filter((item) => {
+                  if (searchTerm === "") {
+                    return null;
+                  } else if (
+                    item.chapterName
+                      .toLowerCase()
+                      .includes(searchTerm.toLowerCase())
+                  ) {
+                    return item;
+                  }
+                }).map((item, index) => {
+                  if (index < 5) {
+                    return (
+                      <div
+                        className="searchItems"
+                        key={index}
+                        id={`searchItem${index}`}
+                      >
+                        <input
+                          type="text"
+                          value={item.chapterName}
+                          onClick={handleSearchItem}
+                        />
+                      </div>
+                    );
+                  }
+                })}
+              </div>
             </div>
             {/* dropdowns */}
             <div className="dropdown_menu row">
