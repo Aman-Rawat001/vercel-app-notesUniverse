@@ -78,8 +78,8 @@ const SearchNotes = () => {
     setSearchTerm(e.target.value);
     setFetchedSub(e.target.value);
     document.getElementById("searchEngineBox").style.display = "none";
+    // subject select will automatically select which is in searchBar.
     var textToFind = e.target.value;
-
     var dd = document.getElementById("selectSub");
     for (var i = 0; i < dd.options.length; i++) {
       if (dd.options[i].text === textToFind) {
@@ -283,7 +283,11 @@ const SearchNotes = () => {
                 {/* before screen */}
                 <div id="beforeScreen">
                   <p className="ms-3">
-                    Select all the fields and press search button.
+                    Search by search bar.
+                    <p className="mt-2">
+                      ----------------or---------------------
+                    </p>
+                    <p>Select dropdown fields and search.</p>
                   </p>
                 </div>
 
