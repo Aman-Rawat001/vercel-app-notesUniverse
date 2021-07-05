@@ -28,10 +28,11 @@ const ShowPdf = () => {
       <div className="holds-the-iframe">
         <object
           className="mt-4"
-          data={`${showLink}`}
+          data={`${showLink}#zoom=85&scrollbar=0&toolbar=0&navpanes=0`}
           type="application/pdf"
           width="100%"
-          height="600px"
+          height="800px"
+          // style={{ pointerEvents: "none" }}
         ></object>
       </div>
       <div className="showOnSmallScreen my-5 container">
@@ -41,10 +42,10 @@ const ShowPdf = () => {
             Your mobile browser doesn't support online PDF viewer.
             <span className="text_bold" style={{ fontWeight: "600" }}>
               {" "}
-              Open in computer or
+              Open in computer or laptop to view the notes.
             </span>{" "}
           </p>
-          <a href={`${showLink}`}>Download Notes PDF</a>
+          {/* <a href={`${showLink}`}>Download Notes PDF</a> */}
         </div>
       </div>
     </div>
