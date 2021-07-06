@@ -3,15 +3,12 @@ import { useParams } from "react-router-dom";
 import "./ShowPdf.css";
 import firebase from "../../../firebase";
 
-import { Viewer } from "@react-pdf-viewer/core";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-import { Worker } from "@react-pdf-viewer/core";
+import { Document, Page, pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const ShowPdf = () => {
   const [showLink, setShowLink] = useState("");
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  const [numPages, setNumPages] = useState(null);
 
   const db = firebase.firestore();
   let { pdfId } = useParams();
@@ -32,10 +29,21 @@ const ShowPdf = () => {
   return (
     <div className="mt-5 text-center">
       <div style={{ marginTop: "10rem" }}>
-      {<><Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
-          <Viewer fileUrl={showLink}
-            plugins={[defaultLayoutPluginInstance]} />
-      </Worker></>}
+        <Document
+          className="documentDiv"
+          file={showLink}
+          onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+        >
+          {Array.apply(null, Array(numPages))
+            .map((x, i) => i + 1)
+            .map((page) => (
+              <Page
+                size="A4"
+                style={{ backgroundColor: "tomato" }}
+                pageNumber={page}
+              />
+            ))}
+        </Document>
       </div>
     </div>
   );
