@@ -24,7 +24,7 @@ const ShowPdf = () => {
 
   useEffect(() => {
     searchPdf();
-  });
+  }, []);
   // prevent pdf from right click.
   window.oncontextmenu = (e) => {
     e.preventDefault();
