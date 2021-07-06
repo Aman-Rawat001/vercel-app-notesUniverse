@@ -3,8 +3,12 @@ import { useParams } from "react-router-dom";
 import "./ShowPdf.css";
 import firebase from "../../../firebase";
 
+import { Document, Page, pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 const ShowPdf = () => {
   const [showLink, setShowLink] = useState("");
+  const [numPages, setNumPages] = useState(null);
 
   const db = firebase.firestore();
   let { pdfId } = useParams();
@@ -14,7 +18,6 @@ const ShowPdf = () => {
     data.docs.forEach((item) => {
       if (pdfId === item.id) {
         setShowLink(item.data().pdfLink);
-        // console.log(item.data().pdfLink);
       }
     });
   };
@@ -22,31 +25,25 @@ const ShowPdf = () => {
   useEffect(() => {
     searchPdf();
   });
+
   return (
     <div className="mt-5 text-center">
-      {/* <h1 className="pt-5">{pdfId}</h1> */}
-      <div className="holds-the-iframe">
-        <object
-          className="mt-4"
-          data={`${showLink}#zoom=85&scrollbar=0&toolbar=0&navpanes=0`}
-          type="application/pdf"
-          width="100%"
-          height="800px"
-          // style={{ pointerEvents: "none" }}
-        ></object>
-      </div>
-      <div className="showOnSmallScreen my-5 container">
-        <div className="py-5 text-center">
-          <p>
-            <span style={{ fontWeight: "600" }}>Sorry! .</span>
-            Your mobile browser doesn't support online PDF viewer.
-            <span className="text_bold" style={{ fontWeight: "600" }}>
-              {" "}
-              Open in computer or laptop to view the notes.
-            </span>{" "}
-          </p>
-          {/* <a href={`${showLink}`}>Download Notes PDF</a> */}
-        </div>
+      <div style={{ marginTop: "10rem" }}>
+        <Document
+          className="documentDiv"
+          file={showLink}
+          onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+        >
+          {Array.apply(null, Array(numPages))
+            .map((x, i) => i + 1)
+            .map((page) => (
+              <Page
+                size="A4"
+                style={{ backgroundColor: "tomato" }}
+                pageNumber={page}
+              />
+            ))}
+        </Document>
       </div>
     </div>
   );
