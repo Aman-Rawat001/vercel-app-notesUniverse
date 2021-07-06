@@ -25,11 +25,17 @@ const ShowPdf = () => {
   useEffect(() => {
     searchPdf();
   });
+  // prevent pdf from right click.
+  window.oncontextmenu = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="mt-5 text-center">
-      <div style={{ marginTop: "10rem" }}>
+      <div style={{ marginTop: "5rem" }}>
+      <hr className="w-50 mx-auto"/>
         <Document
+          id="showDocument"
           className="documentDiv"
           file={showLink}
           onLoadSuccess={({ numPages }) => setNumPages(numPages)}
@@ -44,6 +50,10 @@ const ShowPdf = () => {
               />
             ))}
         </Document>
+      </div>
+      <hr className="w-50 mx-auto"/>
+      <div className="showOnSmallScreen mt-2">
+        <p>Your mobile browser is not compatible to show pdf, <span style={{fontWeight: "bold"}}>open in your computer to access the notes.</span></p>
       </div>
     </div>
   );

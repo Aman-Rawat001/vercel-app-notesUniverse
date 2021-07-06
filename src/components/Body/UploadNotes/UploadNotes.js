@@ -274,7 +274,7 @@ const UploadNotes = () => {
               <input
                 id="uploadFileInput"
                 type="file"
-                accept="application/pdf, .doc,.docx"
+                accept="application/pdf"
                 onChange={(e) => {
                   setPDF(e.target.files[0]);
                 }}
