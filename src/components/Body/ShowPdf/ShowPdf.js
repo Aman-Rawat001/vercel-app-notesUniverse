@@ -3,8 +3,12 @@ import { useParams } from "react-router-dom";
 import "./ShowPdf.css";
 import firebase from "../../../firebase";
 
+import { Document, Page, pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 const ShowPdf = () => {
   const [showLink, setShowLink] = useState("");
+  const [numPages, setNumPages] = useState(null);
 
   const db = firebase.firestore();
   let { pdfId } = useParams();
@@ -14,7 +18,6 @@ const ShowPdf = () => {
     data.docs.forEach((item) => {
       if (pdfId === item.id) {
         setShowLink(item.data().pdfLink);
-        // console.log(item.data().pdfLink);
       }
     });
   };
@@ -22,30 +25,35 @@ const ShowPdf = () => {
   useEffect(() => {
     searchPdf();
   });
+  // prevent pdf from right click.
+  window.oncontextmenu = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="mt-5 text-center">
-      {/* <h1 className="pt-5">{pdfId}</h1> */}
-      <div className="holds-the-iframe">
-        <object
-          className="mt-4"
-          data={`${showLink}`}
-          type="application/pdf"
-          width="100%"
-          height="600px"
-        ></object>
+      <div style={{ marginTop: "5rem" }}>
+      <hr className="w-50 mx-auto"/>
+        <Document
+          id="showDocument"
+          className="documentDiv"
+          file={showLink}
+          onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+        >
+          {Array.apply(null, Array(numPages))
+            .map((x, i) => i + 1)
+            .map((page) => (
+              <Page
+                size="A4"
+                style={{ backgroundColor: "tomato" }}
+                pageNumber={page}
+              />
+            ))}
+        </Document>
       </div>
-      <div className="showOnSmallScreen my-5 container">
-        <div className="py-5 text-center">
-          <p>
-            <span style={{ fontWeight: "600" }}>Sorry! .</span>
-            Your mobile browser doesn't support online PDF viewer.
-            <span className="text_bold" style={{ fontWeight: "600" }}>
-              {" "}
-              Open in computer or
-            </span>{" "}
-          </p>
-          <a href={`${showLink}`}>Download Notes PDF</a>
-        </div>
+      <hr className="w-50 mx-auto"/>
+      <div className="showOnSmallScreen mt-2">
+        <p>Your mobile browser is not compatible to show pdf, <span style={{fontWeight: "bold"}}>open in your computer to access the notes.</span></p>
       </div>
     </div>
   );
