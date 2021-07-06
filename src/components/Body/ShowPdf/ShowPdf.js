@@ -31,24 +31,14 @@ const ShowPdf = () => {
 
   return (
     <div className="mt-5 text-center">
-      {/* using react pdf viewer library but it is getting CORS error. */}
-      {
-        <>
-          <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
-            <Viewer
-              fileUrl={showLink}
-              plugins={[defaultLayoutPluginInstance]}
-            />
-          </Worker>
-        </>
-      }
+      <div style={{ marginTop: "10rem" }}>
+      {<><Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+          <Viewer fileUrl={showLink}
+            plugins={[defaultLayoutPluginInstance]} />
+      </Worker></>}
+      </div>
     </div>
   );
 };
 
 export default ShowPdf;
-// packages used in pdf-Viewer(don't forgot to uninstall them)
-
-// 1- install pdfjs library | npm install pdfjs-dist@2.6.347
-// 2- install the core package | npm install @react-pdf-viewer/core@2.4.1
-// 3- install pdf viewer default layout | npm install @react-pdf-viewer/default-layout
