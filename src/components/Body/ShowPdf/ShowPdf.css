@@ -1,18 +1,30 @@
 .showOnSmallScreen {
   display: none;
 }
-.documentDiv{
+.documentDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+.react-pdf__Page {
+  border: 1px solid gray;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: gray;
+  border-radius: 10px;
+}
 @media (max-width: 575px) {
   .holds-the-iframe {
     display: none;
   }
   .showOnSmallScreen {
     display: block;
+  }
+}
+/* prevent pdf from print */
+@media print {
+  .documentDiv {
+    display: none;
   }
 }

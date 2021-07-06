@@ -7,7 +7,6 @@
   { "chapterName": "Computer Architecture and Organisation" },
   { "chapterName": "Discrete Mathematics" },
   { "chapterName": "Database Management Systems" },
-  { "chapterName": "Operating Systems" },
   { "chapterName": "Software Engineering" },
   { "chapterName": "Theory of Computation" },
   { "chapterName": "Introduction to Communication Systems" },
@@ -20,5 +19,6 @@
   { "chapterName": "Machine Learniniing" },
   { "chapterName": "Cyber Security" },
   { "chapterName": "Compiler Design" },
-  { "chapterName": "Microprocessor" }
+  { "chapterName": "Microprocessor" },
+  { "chapterName": "Operating Systems" }
 ]
