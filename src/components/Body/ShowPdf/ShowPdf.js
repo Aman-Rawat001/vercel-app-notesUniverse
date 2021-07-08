@@ -26,18 +26,18 @@ const ShowPdf = () => {
     searchPdf();
   }, []);
   // prevent pdf from right click.
-  window.oncontextmenu = (e) => {
-    e.preventDefault();
-  };
+  // window.oncontextmenu = (e) => {
+  //   e.preventDefault();
+  // };
 
   return (
-    <div className="mt-5 text-center">
+    <div className="mt-5 text-center container">
       <div style={{ marginTop: "5rem" }}>
         <hr className="w-50 mx-auto" />
         <Document
           id="showDocument"
           className="documentDiv"
-          file={showLink}
+          file={`https://cors-anywhere.herokuapp.com/${showLink}`}
           onLoadSuccess={({ numPages }) => setNumPages(numPages)}
         >
           {Array.apply(null, Array(numPages))
@@ -52,14 +52,14 @@ const ShowPdf = () => {
         </Document>
       </div>
       <hr className="w-50 mx-auto" />
-      <div className="showOnSmallScreen mt-2">
+      {/* <div className="showOnSmallScreen mt-2">
         <p>
           Your mobile browser is not compatible to show pdf,{" "}
           <span style={{ fontWeight: "bold" }}>
             open in your computer to access the notes.
           </span>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

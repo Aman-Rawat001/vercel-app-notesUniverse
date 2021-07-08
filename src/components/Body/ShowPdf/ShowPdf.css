@@ -13,6 +13,11 @@
   padding: 0.5rem;
   background-color: gray;
   border-radius: 10px;
+  width: 70%;
+}
+.react-pdf__Page__canvas{
+  width: 100% !important;
+  height: 100% !important;
 }
 @media (max-width: 575px) {
   .holds-the-iframe {
@@ -20,6 +25,13 @@
   }
   .showOnSmallScreen {
     display: block;
+  }
+  .react-pdf__Page {
+    padding: 0.2rem;
+  }
+  .react-pdf__Page__canvas {
+    width: 20rem !important;
+    height: 30rem !important;
   }
 }
 /* prevent pdf from print */
