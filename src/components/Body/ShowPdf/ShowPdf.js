@@ -52,14 +52,13 @@ const ShowPdf = () => {
         </Document>
       </div>
       <hr className="w-50 mx-auto" />
-      {/* <div className="showOnSmallScreen mt-2">
+      <div className="showOnSmallScreen mt-2">
         <p>
-          Your mobile browser is not compatible to show pdf,{" "}
           <span style={{ fontWeight: "bold" }}>
-            open in your computer to access the notes.
+          Open in big screen for better and fast user exprerience.
           </span>
         </p>
-      </div> */}
+      </div>
     </div>
   );
 };

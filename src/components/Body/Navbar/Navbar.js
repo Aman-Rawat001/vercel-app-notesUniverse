@@ -37,7 +37,7 @@ const Navbar = () => {
                 alignItems: "center",
               }}
             >
-              <img className="logo" src={logo} alt="Logo" />
+              <NavLink to="/"><img className="logo" src={logo} alt="Logo" /></NavLink>
               {/* <h5 className="">NOTES_UNIVERSE</h5> */}
             </div>
           </a>
