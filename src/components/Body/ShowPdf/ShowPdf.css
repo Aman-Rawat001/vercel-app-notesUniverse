@@ -15,9 +15,28 @@
   border-radius: 10px;
   width: 70%;
 }
-.react-pdf__Page__canvas{
-  width: 100% !important;
-  height: 100% !important;
+.transparentDiv {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 1100px;
+  width: 89%;
+  left: 0;
+  /* right: 0; */
+  background-color: transparent;
+  /* background-color: gray; */
+}
+
+.transparentDivWhole {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 1000px;
+  left: 0;
+  background-color: transparent;
+  /* background-color: green; */
+  z-index: -1;
 }
 @media (max-width: 575px) {
   .holds-the-iframe {
