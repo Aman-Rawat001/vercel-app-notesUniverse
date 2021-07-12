@@ -5,7 +5,10 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="container-fluid footer">
+    <div
+      className="container-fluid footer"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <div className="container py-5">
         <div className="row">
           <div className="col-md-6">
@@ -22,7 +25,7 @@ const Footer = () => {
             <div className="rightContent">
               <p>More From Notes Universe</p>
               <div className="d-flex">
-                <div> 
+                <div>
                   <p>
                     <NavLink to="/">Home</NavLink>
                   </p>
