@@ -52,13 +52,22 @@ const ShowPdf = () => {
               height="700px"
             >
               <p>
-                Your web browser doesn't have a PDF plugin. Instead you can{" "}
+                Your web browser doesn't have a PDF plugin. Instead{" "}
+                <span style={{ fontWeight: "500" }}>
+                  {" "}
+                  Open in Computer or laptop.
+                </span>
               </p>
             </object>
 
             <hr className="w-50 mx-auto" />
             <div
               className="transparentDiv"
+              id="disableRightClick"
+              onContextMenu={(e) => e.preventDefault()}
+            ></div>
+            <div
+              className="transparentDivLeft"
               id="disableRightClick"
               onContextMenu={(e) => e.preventDefault()}
             ></div>

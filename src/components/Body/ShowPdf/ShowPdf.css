@@ -26,18 +26,27 @@
   background-color: transparent;
   /* background-color: gray; */
 }
-
-.transparentDivWhole {
+.transparentDivLeft {
   position: absolute;
   top: 0;
   bottom: 0;
+  height: 1100px;
+  width: 6%;
+  /* left: 0; */
   right: 0;
-  height: 1000px;
-  left: 0;
   background-color: transparent;
-  /* background-color: green; */
-  z-index: -1;
+  /* background-color: blue; */
 }
+
+@media (min-width: 1920px) {
+  .transparentDiv {
+    width: 82%;
+  }
+  .transparentDivLeft {
+    width: 15%;
+  }
+}
+
 @media (max-width: 575px) {
   .holds-the-iframe {
     display: none;

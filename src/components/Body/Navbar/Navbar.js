@@ -23,7 +23,7 @@ const Navbar = () => {
   }
 
   return (
-    <div>
+    <div onContextMenu={(e) => e.preventDefault()}>
       <nav
         className="navbar navbar-expand-lg navbar-light bg-light navigationBar"
         id="navbar"
@@ -37,7 +37,9 @@ const Navbar = () => {
                 alignItems: "center",
               }}
             >
-              <NavLink to="/"><img className="logo" src={logo} alt="Logo" /></NavLink>
+              <NavLink to="/">
+                <img className="logo" src={logo} alt="Logo" />
+              </NavLink>
               {/* <h5 className="">NOTES_UNIVERSE</h5> */}
             </div>
           </a>
