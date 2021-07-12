@@ -3,12 +3,9 @@ import { useParams } from "react-router-dom";
 import "./ShowPdf.css";
 import firebase from "../../../firebase";
 
-import { Document, Page, pdfjs } from "react-pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
 const ShowPdf = () => {
   const [showLink, setShowLink] = useState("");
-  const [numPages, setNumPages] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const db = firebase.firestore();
   let { pdfId } = useParams();
@@ -25,41 +22,63 @@ const ShowPdf = () => {
   useEffect(() => {
     searchPdf();
   }, []);
-  // prevent pdf from right click.
-  // window.oncontextmenu = (e) => {
-  //   e.preventDefault();
-  // };
+  useEffect(() => {
+    setLoading(!loading);
+  }, [showLink]);
 
   return (
-    <div className="mt-5 text-center container">
-      <div style={{ marginTop: "5rem" }}>
-        <hr className="w-50 mx-auto" />
-        <Document
-          id="showDocument"
-          className="documentDiv"
-          file={`https://cors-anywhere.herokuapp.com/${showLink}`}
-          onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-        >
-          {Array.apply(null, Array(numPages))
-            .map((x, i) => i + 1)
-            .map((page) => (
-              <Page
-                size="A4"
-                style={{ backgroundColor: "tomato" }}
-                pageNumber={page}
-              />
-            ))}
-        </Document>
+    <>
+      <div className="mt-5 text-end container">
+        <div
+          className="transparentDivWhole"
+          onContextMenu={(e) => e.preventDefault()}
+        ></div>
+        {loading ? (
+          <div style={{ marginTop: "5rem" }}>
+            <hr className="w-50 mx-auto" />
+            <p
+              className="text-end font-weight-bold"
+              style={{
+                backgroundColor: "yellow",
+                display: "inline",
+              }}
+            >
+              Scroll using scroller only.👇
+            </p>
+            <object
+              data={`${showLink}#toolbar=0`}
+              type="application/pdf"
+              width="100%"
+              height="700px"
+            >
+              <p>
+                Your web browser doesn't have a PDF plugin. Instead{" "}
+                <span style={{ fontWeight: "500" }}>
+                  {" "}
+                  Open in Computer or laptop.
+                </span>
+              </p>
+            </object>
+
+            <hr className="w-50 mx-auto" />
+            <div
+              className="transparentDiv"
+              id="disableRightClick"
+              onContextMenu={(e) => e.preventDefault()}
+            ></div>
+            <div
+              className="transparentDivLeft"
+              id="disableRightClick"
+              onContextMenu={(e) => e.preventDefault()}
+            ></div>
+          </div>
+        ) : (
+          <div className="mt-5 text-center">
+            <p className="pt-5">loading your pdf...</p>
+          </div>
+        )}
       </div>
-      <hr className="w-50 mx-auto" />
-      <div className="showOnSmallScreen mt-2">
-        <p>
-          <span style={{ fontWeight: "bold" }}>
-          Open in big screen for better and fast user exprerience.
-          </span>
-        </p>
-      </div>
-    </div>
+    </>
   );
 };
 
