@@ -40,11 +40,9 @@ const SearchNotes = () => {
     var filter;
     if (fetchedSub === "") {
       filter = await response.where("semester", "==", fetchedSem);
-    }
-    if (fetchedSem == "") {
+    } else if (fetchedSem == "") {
       filter = await response.where("subject", "==", fetchedSub);
-    }
-    if (fetchedSub !== "" && fetchedSem !== "") {
+    } else if (fetchedSub !== "" && fetchedSem !== "") {
       filter = await response
         .where("semester", "==", fetchedSem)
         .where("subject", "==", fetchedSub);
