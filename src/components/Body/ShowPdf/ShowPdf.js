@@ -10,12 +10,14 @@ const ShowPdf = () => {
   const db = firebase.firestore();
   let { pdfId } = useParams();
   const searchPdf = async () => {
-    const response = db.collection("Notes_Data");
+    const response = db.collection("Notes_Data").where("key", "==", pdfId);
     const data = await response.get();
     data.docs.forEach((item) => {
-      if (pdfId === item.id) {
-        setShowLink(item.data().pdfLink);
-      }
+      // if (pdfId === item.id) {
+      //   setShowLink(item.data().pdfLink);
+      // }
+      // console.log(item.data().pdfLink);
+      setShowLink(item.data().pdfLink);
     });
   };
 
