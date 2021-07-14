@@ -45,4 +45,7 @@ workflows:
                 - master
   test-and-build:
     jobs:
-      - build
+      build:
+        branches:
+          ignore:
+            - master
