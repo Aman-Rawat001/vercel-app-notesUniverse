@@ -39,10 +39,9 @@ const ShowPdf = () => {
           <div style={{ marginTop: "5rem" }}>
             <hr className="w-50 mx-auto" />
             <p
-              className="text-end font-weight-bold"
+              className="text-end font-weight-bold scrollUsingScrollbar"
               style={{
                 backgroundColor: "yellow",
-                display: "inline",
               }}
             >
               Scroll using scroller only.👇
@@ -53,13 +52,15 @@ const ShowPdf = () => {
               width="100%"
               height="700px"
             >
-              <p>
-                Your web browser doesn't have a PDF plugin. Instead{" "}
-                <span style={{ fontWeight: "500" }}>
-                  {" "}
-                  Open in Computer or laptop.
-                </span>
-              </p>
+              <div className="text-center">
+                <p>
+                  Your web browser doesn't have a PDF plugin. Instead{" "}
+                  <span style={{ fontWeight: "500" }}>
+                    {" "}
+                    Open in Computer or laptop to view the notes.
+                  </span>
+                </p>
+              </div>
             </object>
 
             <hr className="w-50 mx-auto" />
