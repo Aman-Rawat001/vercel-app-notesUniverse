@@ -47,10 +47,20 @@
   }
 }
 
+.scrollUsingScrollbar {
+  display: inline;
+}
+@media (max-width: 800px) {
+  .scrollUsingScrollbar {
+    display: none;
+  }
+}
+
 @media (max-width: 575px) {
   .holds-the-iframe {
     display: none;
   }
+
   .showOnSmallScreen {
     display: block;
   }

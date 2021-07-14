@@ -8,7 +8,7 @@ import apiKeys from "../SendEmail/apiKey.js";
 const UploadNotes = () => {
   const db = firebase.firestore();
   const [progressBar, setProgressBar] = useState("0");
-  const [PDF, setPDF] = useState("");
+  const [PDF, setPDF] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState("");
   const [selectedSemester, setSelectedSemester] = useState("");
 
@@ -45,33 +45,41 @@ const UploadNotes = () => {
       !selectedSubject
     ) {
       alert("Please fill all the fields");
+
       analytics.logEvent("Unsuccessfull_uploads");
     } else {
-      if (PDF === null) return;
-      // checking size validation.
-      const oFile = document.getElementById("exampleFormControlFile1").files[0];
-      if (oFile.size > 7340032) {
-        // console.log("more than 7mb")
-        document.getElementById("fileMoreThan7MB").style.display = "block";
-      } else {
-        document.getElementById("fileMoreThan7MB").style.display = "none";
-        document.getElementById("uploadingBar").style.display = "block";
-        // store file in storage.
-        storage
-          .ref(`/images/${PDF.name}`)
-          .put(PDF)
-          .on("state_changed", (snapshot) => {
-            var progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            setProgressBar(progress);
-            // console.log(progress);
-            if (progress === 100) {
-              analytics.logEvent("Successfull_uploads");
-              setTimeout(() => {
-                sendDataInDB();
-              }, 2000);
-            }
-          });
+      if (PDF === null) {
+        alert("Please select your notes.");
+
+        // return;
+      }
+      if (PDF !== null) {
+        // checking size validation.
+        const oFile = document.getElementById("exampleFormControlFile1")
+          .files[0];
+        if (oFile.size > 7340032) {
+          // console.log("more than 7mb")
+          document.getElementById("fileMoreThan7MB").style.display = "block";
+        } else {
+          document.getElementById("fileMoreThan7MB").style.display = "none";
+          document.getElementById("uploadingBar").style.display = "block";
+          // store file in storage.
+          storage
+            .ref(`/images/${PDF.name}`)
+            .put(PDF)
+            .on("state_changed", (snapshot) => {
+              var progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              setProgressBar(progress);
+              // console.log(progress);
+              if (progress === 100) {
+                analytics.logEvent("Successfull_uploads");
+                setTimeout(() => {
+                  sendDataInDB();
+                }, 2000);
+              }
+            });
+        }
       }
     }
     const sendDataInDB = () => {
@@ -85,7 +93,7 @@ const UploadNotes = () => {
           // console.log("file url: " + url);
           // getting file name.
           var httpsReference = storage.refFromURL(url);
-          // console.log("file name: " + httpsReference.name);
+          console.log("file name: " + httpsReference.name);
 
           db.collection("Notes_Data")
             .add({
@@ -123,8 +131,9 @@ const UploadNotes = () => {
               setProgressBar("0");
               document.getElementById("select_sem").selectedIndex = "0";
               document.getElementById("select_sub").selectedIndex = "0";
-              let input = document.querySelector('input[type="file"]');
-              input.outerHTML = input.outerHTML;
+              // let input = document.querySelector('input[type="file"]');
+              // input.outerHTML = input.outerHTML;
+              window.location.reload();
             })
             .catch((err) => {
               console.log(err);
