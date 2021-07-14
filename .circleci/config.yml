@@ -24,6 +24,7 @@ jobs:
     deploy:
         docker:
             - image: circleci/node:10.16.0
+        working_directory: ~/repo
         steps:
             - checkout
             - run:
@@ -38,10 +39,11 @@ workflows:
             - deploy:
                 requires:
                     - build
-                    filters:
-                        branches:
-                            only:
-                                - master
+                        filters:
+                            branches:
+                                only:
+                                    - master
     test-and-build:
         jobs:
             - build
+
