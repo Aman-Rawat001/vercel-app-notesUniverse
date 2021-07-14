@@ -24,8 +24,8 @@ jobs:
     deploy:
         docker:
             - image: circleci/node:10.16.0
-        working_directory: ~/repo
         steps:
+            -checkout
             - run:
                  name: Firebase Deploy
                  command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
@@ -45,4 +45,3 @@ workflows:
     test-and-build:
         jobs:
             -build
-            
