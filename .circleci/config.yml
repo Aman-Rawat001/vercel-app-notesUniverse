@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  deploying-to-firebase:
+  deploy:
     docker:
       - image: circleci/node:10.16.0
     working_directory: ~/repo
@@ -29,7 +29,7 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - deploying-to-firebase:
-        filters:
-          branches:
-            only: -master
+      - deploy:
+          filters:
+            branches:
+              only: -master
