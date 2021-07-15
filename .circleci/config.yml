@@ -21,16 +21,15 @@ jobs:
       - run:
           name: Build
           command: npm run build
-      - run:
-          name: Firebase Deploy
-          command: "./node_modules/.bin/firebase deploy  --token=$FIREBASE_TOKEN"
-
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - deploy:
-          filters:
-            branches:
-              only:
-                - master
+      # - run:
+      #     name: Firebase Deploy
+      #     command: "./node_modules/.bin/firebase deploy  --token=$FIREBASE_TOKEN"
+# workflows:
+#   version: 2
+#   build-and-deploy:
+#     jobs:
+#       - deploy:
+#           filters:
+#             branches:
+#               only:
+#                 - master

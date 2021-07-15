@@ -45,6 +45,7 @@ const ShowPdf = () => {
               }}
             >
               Scroll using scroller only.👇
+              {/* demo */}
             </p>
             <object
               data={`${showLink}#toolbar=0`}
