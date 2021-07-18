@@ -45,7 +45,7 @@ const UploadNotes = () => {
       !selectedSubject
     ) {
       alert("Please fill all the fields");
-
+      
       analytics.logEvent("Unsuccessfull_uploads");
     } else {
       if (PDF === null) {
@@ -93,8 +93,8 @@ const UploadNotes = () => {
           // console.log("file url: " + url);
           // getting file name.
           var httpsReference = storage.refFromURL(url);
-          console.log("file name: " + httpsReference.name);
-
+          // console.log("file name: " + httpsReference.name);
+          var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
           db.collection("Notes_Data")
             .add({
               name: uploadDetail.name,
@@ -104,6 +104,8 @@ const UploadNotes = () => {
               semester: selectedSemester,
               file_name: httpsReference.name,
               pdfLink: url,
+              date: utc
+              
             })
             .then(() => {
               alert("File has been successfully uploaded");
