@@ -45,7 +45,7 @@ const UploadNotes = () => {
       !selectedSubject
     ) {
       alert("Please fill all the fields");
-      
+
       analytics.logEvent("Unsuccessfull_uploads");
     } else {
       if (PDF === null) {
@@ -94,7 +94,7 @@ const UploadNotes = () => {
           // getting file name.
           var httpsReference = storage.refFromURL(url);
           // console.log("file name: " + httpsReference.name);
-          var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+          var utc = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
           db.collection("Notes_Data")
             .add({
               name: uploadDetail.name,
@@ -104,8 +104,7 @@ const UploadNotes = () => {
               semester: selectedSemester,
               file_name: httpsReference.name,
               pdfLink: url,
-              date: utc
-              
+              date: utc,
             })
             .then(() => {
               alert("File has been successfully uploaded");
@@ -231,28 +230,29 @@ const UploadNotes = () => {
                     <option value="8">Database Management Systems</option>
                     <option value="9">Operating Systems</option>
                     <option value="10">Software Engineering</option>
-                    <option value="11">Theory of Computation</option>
-                    <option value="12">
+                    <option value="11">System Software</option>
+                    <option value="12">Theory of Computation</option>
+                    <option value="13">
                       Introduction to Communication Systems
                     </option>
-                    <option value="13">Multi-device Programming</option>
-                    <option value="14">Java Programming</option>
-                    <option value="15">Advanced Java Programming</option>
-                    <option value="16">CBNST</option>
-                    <option value="17">Microprocessor</option>
+                    <option value="14">Multi-device Programming</option>
+                    <option value="15">Java Programming</option>
+                    <option value="16">Advanced Java Programming</option>
+                    <option value="17">CBNST</option>
+                    <option value="18">Microprocessor</option>
                     <option
                       disabled
                       style={{ backgroundColor: "gray", color: "white" }}
                     >
                       Professional Elective Subjects
                     </option>
-                    <option value="18">Artificial Intelligence</option>
-                    <option value="19">
+                    <option value="19">Artificial Intelligence</option>
+                    <option value="20">
                       Introduction to Internet-Of-Things
                     </option>
-                    <option value="20">Machine Learning</option>
-                    <option value="21">Cyber Security</option>
-                    <option value="22">Compiler Design</option>
+                    <option value="21">Machine Learning</option>
+                    <option value="22">Cyber Security</option>
+                    <option value="23">Compiler Design</option>
                   </select>
                 </div>
                 <div className="dropdown_menu my-2 mt-3 ">
