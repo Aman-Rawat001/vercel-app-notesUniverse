@@ -31,22 +31,14 @@ const ShowPdf = () => {
   return (
     <>
       <div className="mt-5 text-end container">
-        <div
+        {/* <div
           className="transparentDivWhole"
           onContextMenu={(e) => e.preventDefault()}
-        ></div>
+        ></div> */}
         {loading ? (
           <div style={{ marginTop: "5rem" }}>
             <hr className="w-50 mx-auto" />
-            <p
-              className="text-end font-weight-bold scrollUsingScrollbar"
-              style={{
-                backgroundColor: "yellow",
-              }}
-            >
-              Scroll using scroller only.👇
-              {/* demo */}
-            </p>
+
             <object
               data={`${showLink}#toolbar=0`}
               type="application/pdf"
@@ -55,17 +47,28 @@ const ShowPdf = () => {
             >
               <div className="text-center">
                 <p>
-                  Your web browser doesn't have a PDF plugin. Instead{" "}
+                  Your mobile browser doesn't have a PDF plugin.
                   <span style={{ fontWeight: "500" }}>
                     {" "}
                     Open in Computer or laptop to view the notes.
                   </span>
                 </p>
+                <button
+                  className="btn btn-success"
+                  style={{ backgroundColor: "#2962b8", outline: "none" }}
+                >
+                  <a
+                    style={{ textDecoration: "none", color: "white" }}
+                    href={showLink}
+                  >
+                    Download PDF
+                  </a>
+                </button>
               </div>
             </object>
 
             <hr className="w-50 mx-auto" />
-            <div
+            {/* <div
               className="transparentDiv"
               id="disableRightClick"
               onContextMenu={(e) => e.preventDefault()}
@@ -74,7 +77,7 @@ const ShowPdf = () => {
               className="transparentDivLeft"
               id="disableRightClick"
               onContextMenu={(e) => e.preventDefault()}
-            ></div>
+            ></div> */}
           </div>
         ) : (
           <div className="mt-5 text-center">
